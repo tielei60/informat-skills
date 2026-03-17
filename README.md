@@ -142,7 +142,7 @@ generated_scripts/
 - `storage`
 - `survey`
 - `transaction`
-- `misc`
+- `other`
 
 二级目录按月份归类：
 
@@ -156,6 +156,7 @@ YYYY-MM
 generated_scripts/user/2026-03/update_user_role.js
 generated_scripts/company/2026-03/add_company_member.js
 generated_scripts/transaction/2026-03/update_user_role_with_transaction.js
+generated_scripts/other/2026-03/generate_runtime_helper.js
 ```
 
 ### 文件命名规范
@@ -171,6 +172,22 @@ generated_scripts/transaction/2026-03/update_user_role_with_transaction.js
 - `update_user_role.js`
 - `add_company_member.js`
 - `query_users_by_dept.js`
+
+### 兜底目录
+
+如果脚本无法稳定归类到已有业务域，统一放到：
+
+```text
+generated_scripts/other/YYYY-MM/
+```
+
+适用情况：
+
+- 横跨多个业务域
+- 只有抽象工具语义，没有单一主领域
+- 需求信息不足，无法稳定判断主归类
+
+使用 `other` 时，保存完成后应明确说明归类原因。
 
 ### 文件头模板
 
@@ -232,6 +249,7 @@ generated_scripts/transaction/2026-03/update_user_role_with_transaction.js
 - 默认保存询问
 - 已表达保存意图时直接落盘
 - “确认后放到本地”这类隐含保存意图识别
+- 无法稳定归类时放入 `other` 兜底目录
 
 ## 验证方式
 

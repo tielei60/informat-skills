@@ -17,7 +17,7 @@
 ## 字段说明
 
 - `脚本名称`：与最终文件名保持一致，但不带 `.js`
-- `归类目录`：对应 `generated_scripts/<domain>/...` 中的业务域
+- `归类目录`：对应 `generated_scripts/<domain>/...` 中的业务域；若无法稳定归类可为 `other`
 - `生成时间`：使用生成时的日期
 - `用途`：一句话说明脚本目的
 - `需替换项`：列出用户需要按现场实际替换的字段、角色、模块标识符等；没有则写 `无`
@@ -51,4 +51,16 @@ function addMemberToCompany(companyId, accountId, departmentList, roleList) {
 
   informat.system.addCompanyMember(companyId, accountId, departmentList || [], roleList || []);
 }
+```
+
+## `other` 目录示例
+
+```js
+/**
+ * 脚本名称：generate_runtime_helper
+ * 归类目录：other
+ * 生成时间：2026-03-17
+ * 用途：生成跨多个业务域复用的辅助脚本
+ * 需替换项：无
+ */
 ```
