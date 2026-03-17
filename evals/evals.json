@@ -54,6 +54,24 @@
       "prompt": "请写一个织信脚本事务示例：开始事务，更新用户角色，失败就回滚。",
       "expected_output": "应识别事务接口可能存在不同签名，避免把 commit()/rollback() 与 commit(status)/rollback(status) 混成同一确定写法；应说明需按现场 SDK 签名确认，或给出基于明确签名的保守骨架。",
       "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "帮我写一个更新用户角色的织信脚本。",
+      "expected_output": "在给出脚本内容后，应追加询问是否按本地目录规范保存到本地文件。",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "帮我写一个更新用户角色的织信脚本，并保存到本地文件。",
+      "expected_output": "应识别用户已明确表达保存意图，不再二次追问；应按规则给出或执行本地保存路径，例如 generated_scripts/user/YYYY-MM/update_user_role.js。",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "帮我写一个团队成员添加脚本，确认没问题就放到本地目录里。",
+      "expected_output": "应识别“确认没问题就放到本地目录里”属于明确保存意图，不要求用户必须说出“保存”二字；文件应按 company 目录归类，文件名使用小写下划线格式。",
+      "files": []
     }
   ]
 }
