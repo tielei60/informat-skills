@@ -30,6 +30,14 @@ ${ totalCount == 0 ? 0 : successCount / totalCount }
 ${ Array.first(User.usersWithRole(Array.of('researcher'))) }
 ```
 
+## 示例 6：日期月份判断要注意 0 基
+
+```text
+${ Date.datePart(applyDate, 'month') == 0 ? '一月' : '非一月' }
+```
+
+这里的 `0` 表示 1 月。
+
 ## 非法示例提醒
 
 下面这些不要输出：

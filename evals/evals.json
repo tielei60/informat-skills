@@ -42,6 +42,18 @@
       "prompt": "帮我写一个织信脚本，调用一个文档里没有出现的 startApprovalProcess API 发起审批。",
       "expected_output": "应明确说明现有资料无法确认该 API，不能杜撰调用；可以只写已知前置逻辑，并把未知调用部分标为待替换。",
       "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "帮我写一个织信表达式，判断 applyDate 是否在 1 月，如果是返回“年初”。",
+      "expected_output": "应考虑表达式日期 month 为 0 到 11 的规则，若使用 Date.datePart(applyDate, 'month') 判断 1 月，应与 0 比较，而不是 1。",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "请写一个织信脚本事务示例：开始事务，更新用户角色，失败就回滚。",
+      "expected_output": "应识别事务接口可能存在不同签名，避免把 commit()/rollback() 与 commit(status)/rollback(status) 混成同一确定写法；应说明需按现场 SDK 签名确认，或给出基于明确签名的保守骨架。",
+      "files": []
     }
   ]
 }

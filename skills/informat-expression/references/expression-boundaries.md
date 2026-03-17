@@ -39,8 +39,23 @@
 - 条件逻辑：`A ? B : C`
 - 集合判断：`Array.containsAny(...)`、`Array.containsAll(...)`
 - 聚合：`Array.sum(...)`、`Array.avg(...)`、`Array.max(...)`、`Array.min(...)`
+- 日期计算：`Date.dateAdd(...)`、`Date.datePart(...)`、`Date.dateBefore(...)`、`Date.dateAfter(...)`
 
-## 四、什么时候建议改用脚本
+## 四、日期函数的特殊点
+
+生成日期表达式时，尤其要注意：
+
+- `month` 的值范围是 `0` 到 `11`
+- `day_of_week` 的值范围是 `0` 到 `6`
+
+这意味着：
+
+- 1 月不是 `1`，而是 `0`
+- 星期日不是 `1`，而是 `0`
+
+如果用户要求“按自然月份数字判断”，要先确认是否需要把用户语义转换为表达式内部取值。
+
+## 五、什么时候建议改用脚本
 
 遇到这些需求时，优先建议改用 `informat-script`：
 
