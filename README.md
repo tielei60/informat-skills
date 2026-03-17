@@ -81,6 +81,12 @@ sources/
   informat.client.d.ts
 evals/
   evals.json
+examples/
+  generated_scripts/
+    user/2026-03/update_user_role.js
+    company/2026-03/add_company_member.js
+    transaction/2026-03/update_user_role_with_transaction.js
+    other/2026-03/generate_runtime_helper.js
 ```
 
 ## 安装
@@ -233,6 +239,28 @@ generated_scripts/other/YYYY-MM/
 
 各 skill 的 `references/` 是对高频规则和高风险场景的提炼；遇到边缘能力时，应回到 `sources/` 查证。
 
+## 示例资产
+
+仓库额外提供了按本地保存规范组织的示例文件，位于：
+
+```text
+examples/generated_scripts/
+```
+
+当前包含：
+
+- `examples/generated_scripts/user/2026-03/update_user_role.js`
+- `examples/generated_scripts/company/2026-03/add_company_member.js`
+- `examples/generated_scripts/transaction/2026-03/update_user_role_with_transaction.js`
+- `examples/generated_scripts/other/2026-03/generate_runtime_helper.js`
+
+这些示例的作用是：
+
+- 展示标准目录结构
+- 展示 `snake_case` 文件命名
+- 展示文件头模板的实际样式
+- 展示 `other` 兜底目录的真实落法
+
 ## 评估覆盖
 
 当前 `evals/evals.json` 已覆盖以下风险场景：
@@ -250,6 +278,7 @@ generated_scripts/other/YYYY-MM/
 - 已表达保存意图时直接落盘
 - “确认后放到本地”这类隐含保存意图识别
 - 无法稳定归类时放入 `other` 兜底目录
+- 本地保存规范对应的真实样例文件
 
 ## 验证方式
 
