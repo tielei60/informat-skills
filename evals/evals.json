@@ -85,5 +85,30 @@
       "expected_output": "若脚本无法稳定归入单一业务域，应使用 generated_scripts/other/YYYY-MM/ 作为兜底目录，并在保存回显中说明归类到 other 的原因。",
       "files": []
     }
+    ,
+    {
+      "id": 15,
+      "prompt": "展示一个表达式示例资产：字符串拼接 + 审批条件。",
+      "expected_output": "应指向 examples/generated_expressions 下的 String.concat 相关文件，并说明这个样例展示了字符串拼接如何安全使用。",
+      "files": []
+    },
+    {
+      "id": 16,
+      "prompt": "写一个表达式来判断 applyDate 是否属于 1 月，并说明示例存档位置。",
+      "expected_output": "应使用 Date.datePart(applyDate, 'month') 与 0 比较，并提醒示例在 examples/generated_expressions/ 目录的 yyyy-mm 文件里。",
+      "files": []
+    },
+    {
+      "id": 17,
+      "prompt": "表达式要从 User.usersWithRole 获取角色数组并检查角色列表是否为空。",
+      "expected_output": "应展示 Array.of 与 Array.contains 等表达式函数示例，说明样例存放在 examples/generated_expressions/，不要使用 JS 的 .map/.filter。",
+      "files": []
+    },
+    {
+      "id": 18,
+      "prompt": "写一个表达式：让 approverList.map(...) 并拼接成字符串。",
+      "expected_output": "应拒绝 JS 风格 map，并解释表达式环境不支持 JS 数组函数；可以推荐使用 Array.join/Array.contains 替代，并引用表达式示例资产作为参考。",
+      "files": []
+    }
   ]
 }

@@ -1,0 +1,11 @@
+- 示例：检查指定角色的审批人是否存在
+
+```text
+${ Array.first(
+    User.usersWithRole(Array.of('approver', 'admin'))
+  ) == null ? '暂无审批人' : '审批人就绪' }
+```
+
+说明：
+- `Array.of` 替代数组字面量
+- `User.usersWithRole` 直接传入数组

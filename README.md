@@ -269,10 +269,10 @@ examples/generated_expressions/
 
 当前包含：
 
-- `examples/generated_expressions/amount_condition/2026-03/approval_level.txt`
-- `examples/generated_expressions/date_month/2026-03/is_first_month.txt`
-- `examples/generated_expressions/array_roles/2026-03/role_lookup.txt`
-- `examples/generated_expressions/forbidden_js/2026-03/map_filter_rejected.txt`
+- `examples/generated_expressions/2026-03/string_concat_example.txt`
+- `examples/generated_expressions/2026-03/date_month_zero_base.txt`
+- `examples/generated_expressions/2026-03/array_of_user_role.txt`
+- `examples/generated_expressions/2026-03/js_style_error.txt`
 
 这些表达式样本演示：
 
@@ -280,6 +280,7 @@ examples/generated_expressions/
 - 0 基月份判断：`Date.datePart(..., 'month') == 0`
 - 数组包装场景：`Array.of(...)` 搭配 `User.usersWithRole(...)`
 - 拒绝 JS 风格 map/filter 或数组字面量的处理
+- 如何把“正确写法”和“错误写法”都沉淀成可复用教学资产
 
 ## 评估覆盖
 
@@ -299,6 +300,7 @@ examples/generated_expressions/
 - “确认后放到本地”这类隐含保存意图识别
 - 无法稳定归类时放入 `other` 兜底目录
 - 本地保存规范对应的真实样例文件
+- 表达式示例资产对 String.concat、0 基月份、数组包装和 JS 越界的覆盖
 
 ## 验证方式
 

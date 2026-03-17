@@ -1,0 +1,9 @@
+- 示例：String.concat 拼接审批单号
+
+```text
+${ String.concat('PO-', purchase_order_number, '-', dept_code) }
+```
+
+说明：
+- 明确使用 `String.concat`，确保没有 `+` 拼接
+- 适合实例名称或编号规则
