@@ -2,6 +2,8 @@
 
 本文件提炼脚本生成最常见的 API。若这里没有，再查 `../../sources/informat.script.md` 与类型定义。
 
+注意：本文件是速查，不是冲突仲裁文档。遇到返回值、参数名或命名空间歧义时，同时查看 `script-safety.md` 与 `sources/` 原文。
+
 ## `informat.system`
 
 账号与团队级操作：
@@ -51,6 +53,11 @@
 - `queryCompanyMemberList(query)`
 - `queryCompanyMemberListCount(filter)`
 
+注意：
+
+- `informat.company.addCompanyMember(...)` 语义偏向当前团队上下文
+- 与 `informat.system.addCompanyMember(...)` 不同，不要混用
+
 ## `informat.dept`
 
 部门与组织架构：
@@ -82,6 +89,10 @@
 - `addUser(userId, roleList)`
 - `updateUserRole(userId, roleList)`
 - `deleteUser(userId)`
+
+注意：
+
+- `updateUserRole(...)` 的返回值在来源里存在冲突，生成代码时不要依赖其返回值
 
 ## 来源于类型定义的补充能力
 

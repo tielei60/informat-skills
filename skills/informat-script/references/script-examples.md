@@ -48,11 +48,44 @@ function updateUserRoles(userId, roleList) {
     informat.app.abort('缺少角色列表');
   }
 
+  // 资料对 updateUserRole 的返回值描述存在冲突，因此这里不依赖返回值。
   informat.user.updateUserRole(userId, roleList);
 }
 ```
 
-## 示例 4：无法确认的能力要直接说明
+## 示例 4：当前团队上下文下添加团队成员
+
+```js
+function addCurrentCompanyMember(accountId, departmentList, roleList) {
+  if (!accountId) {
+    informat.app.abort('缺少账号ID');
+  }
+
+  if (!roleList || roleList.length === 0) {
+    informat.app.abort('缺少角色列表');
+  }
+
+  informat.company.addCompanyMember(accountId, departmentList || [], roleList);
+}
+```
+
+## 示例 5：指定团队场景下添加团队成员
+
+```js
+function addMemberToCompany(companyId, accountId, departmentList, roleList) {
+  if (!companyId) {
+    informat.app.abort('缺少团队ID');
+  }
+
+  if (!accountId) {
+    informat.app.abort('缺少账号ID');
+  }
+
+  informat.system.addCompanyMember(companyId, accountId, departmentList || [], roleList || []);
+}
+```
+
+## 示例 6：无法确认的能力要直接说明
 
 如果用户说：
 

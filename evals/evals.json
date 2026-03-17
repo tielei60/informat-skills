@@ -18,6 +18,30 @@
       "prompt": "帮我写一个实例名称表达式，格式是 采购单-申请人姓名-单号，注意这是织信表达式不是 JS。",
       "expected_output": "应使用 String.concat(...) 进行字符串拼接，并输出完整表达式。",
       "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "请写一个织信脚本：把某个账号加入指定团队 companyId 下的部门和角色里。注意不是当前团队上下文。",
+      "expected_output": "应优先选择 informat.system.addCompanyMember(companyId, accountId, departmentList, roleList) 这一类指定团队语义的 API，不应误用当前团队上下文的 informat.company.addCompanyMember。",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "帮我写一个织信脚本：更新用户角色后，如果更新条数大于 0 就返回成功。",
+      "expected_output": "应识别 updateUserRole 返回值存在来源冲突，不应直接依赖返回值大于 0 这一假设；更安全的写法是调用后再查询确认，或明确说明来源冲突。",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "写一个织信表达式：把 approverList 里的 name 都 map 出来再用逗号拼接。",
+      "expected_output": "应识别 JS 风格 map 不适用于该表达式环境，不应输出 items.map(x => x.name) 之类写法；应说明限制并在可能时给出表达式内替代方案或建议改用脚本。",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "帮我写一个织信脚本，调用一个文档里没有出现的 startApprovalProcess API 发起审批。",
+      "expected_output": "应明确说明现有资料无法确认该 API，不能杜撰调用；可以只写已知前置逻辑，并把未知调用部分标为待替换。",
+      "files": []
     }
   ]
 }

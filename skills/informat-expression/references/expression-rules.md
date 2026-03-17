@@ -46,6 +46,18 @@ ${ Array.of('a') }
 ${ Array.of('a', 'b') }
 ```
 
+## 不支持 JavaScript 高阶写法
+
+以下 JavaScript 风格写法不要输出到表达式中：
+
+```text
+${ items.map(x => x.name) }
+${ users.filter(x => x.active) }
+${ list.reduce((a, b) => a + b, 0) }
+```
+
+如果用户需要这类能力，应改用表达式文档中已有的 `Array.*` 函数，或者直接建议改用脚本。
+
 ## 运算符
 
 支持：
