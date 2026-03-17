@@ -1,0 +1,23 @@
+{
+  "skill_name": "informat-skills",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "请基于织信脚本SDK写一个方法：输入部门ID，查询该部门下所有应用成员；如果部门不存在则终止脚本并提示错误。",
+      "expected_output": "应优先输出完整 JavaScript 方法，使用 informat.dept.getDept、informat.user.getUserByDeptList、informat.app.abort 等已知能力，不得杜撰 API。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "帮我写一个织信表达式：当 amount 大于 10000 时返回“高级审批”，否则返回“普通审批”。",
+      "expected_output": "应输出一个合法的 ${...} 表达式，不能混入 JavaScript 语法。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "帮我写一个实例名称表达式，格式是 采购单-申请人姓名-单号，注意这是织信表达式不是 JS。",
+      "expected_output": "应使用 String.concat(...) 进行字符串拼接，并输出完整表达式。",
+      "files": []
+    }
+  ]
+}
