@@ -261,6 +261,26 @@ examples/generated_scripts/
 - 展示文件头模板的实际样式
 - 展示 `other` 兜底目录的真实落法
 
+为了对应表达式这类输出，仓库也提供了实验性的表达式样例资产：
+
+```text
+examples/generated_expressions/
+```
+
+当前包含：
+
+- `examples/generated_expressions/amount_condition/2026-03/approval_level.txt`
+- `examples/generated_expressions/date_month/2026-03/is_first_month.txt`
+- `examples/generated_expressions/array_roles/2026-03/role_lookup.txt`
+- `examples/generated_expressions/forbidden_js/2026-03/map_filter_rejected.txt`
+
+这些表达式样本演示：
+
+- 合法字符串拼接：`String.concat(...)`
+- 0 基月份判断：`Date.datePart(..., 'month') == 0`
+- 数组包装场景：`Array.of(...)` 搭配 `User.usersWithRole(...)`
+- 拒绝 JS 风格 map/filter 或数组字面量的处理
+
 ## 评估覆盖
 
 当前 `evals/evals.json` 已覆盖以下风险场景：
