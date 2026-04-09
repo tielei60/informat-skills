@@ -1,0 +1,4 @@
+interface:
+  display_name: "织信表达式生成"
+  short_description: "生成合法的织信 UEL 表达式"
+  default_prompt: "使用 $informat-expression 生成遵守 DSL 规则的织信 UEL 表达式。"

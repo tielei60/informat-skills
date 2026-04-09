@@ -30,7 +30,15 @@ ${ totalCount == 0 ? 0 : successCount / totalCount }
 ${ Array.first(User.usersWithRole(Array.of('researcher'))) }
 ```
 
-## 示例 6：日期月份判断要注意 0 基
+## 示例 6：提取姓名后按逗号拼接
+
+```text
+${ Array.join(Array.map(approverList, 'name'), ',') }
+```
+
+这里使用的是表达式 DSL 的 `Array.map(list, key)`，不是 JavaScript 的 `items.map(...)`。
+
+## 示例 7：日期月份判断要注意 0 基
 
 ```text
 ${ Date.datePart(applyDate, 'month') == 0 ? '一月' : '非一月' }
@@ -52,4 +60,4 @@ ${ items.map(x => x.name) }
 
 - 第一条错误使用 `+` 做字符串拼接
 - 第二条错误使用数组字面量
-- 第三条把 JavaScript 箭头函数写进了表达式
+- 第三条把 JavaScript 方法调用和箭头函数写进了表达式

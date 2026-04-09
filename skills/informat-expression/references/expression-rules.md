@@ -46,7 +46,7 @@ ${ Array.of('a') }
 ${ Array.of('a', 'b') }
 ```
 
-## 不支持 JavaScript 高阶写法
+## 不支持 JavaScript 风格集合写法
 
 以下 JavaScript 风格写法不要输出到表达式中：
 
@@ -56,7 +56,16 @@ ${ users.filter(x => x.active) }
 ${ list.reduce((a, b) => a + b, 0) }
 ```
 
-如果用户需要这类能力，应改用表达式文档中已有的 `Array.*` 函数，或者直接建议改用脚本。
+如果用户需要这类能力，应优先改写为表达式文档中已有的 DSL 函数，而不是 JavaScript 方法调用。
+
+### 合法替代示例
+
+```text
+${ Array.join(Array.map(approverList, 'name'), ',') }
+${ Array.filter(userList, 'active', true) }
+```
+
+这些是表达式 DSL 中的 `Array.*` 函数，不是 JavaScript 数组实例方法。
 
 ## 运算符
 

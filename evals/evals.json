@@ -34,7 +34,7 @@
     {
       "id": 6,
       "prompt": "写一个织信表达式：把 approverList 里的 name 都 map 出来再用逗号拼接。",
-      "expected_output": "应识别 JS 风格 map 不适用于该表达式环境，不应输出 items.map(x => x.name) 之类写法；应说明限制并在可能时给出表达式内替代方案或建议改用脚本。",
+      "expected_output": "应拒绝输出 JS 风格的 items.map(x => x.name)，并优先改写为来源文档明确存在的 DSL 形式，例如 Array.map(approverList, 'name') 搭配 Array.join(..., ',')。",
       "files": []
     },
     {
@@ -84,8 +84,7 @@
       "prompt": "帮我写一个跨多个业务域的织信辅助脚本，主要做通用运行时整理，并放到本地文件里。",
       "expected_output": "若脚本无法稳定归入单一业务域，应使用 generated_scripts/other/YYYY-MM/ 作为兜底目录，并在保存回显中说明归类到 other 的原因。",
       "files": []
-    }
-    ,
+    },
     {
       "id": 15,
       "prompt": "展示一个表达式示例资产：字符串拼接 + 审批条件。",
@@ -101,13 +100,19 @@
     {
       "id": 17,
       "prompt": "表达式要从 User.usersWithRole 获取角色数组并检查角色列表是否为空。",
-      "expected_output": "应展示 Array.of 与 Array.contains 等表达式函数示例，说明样例存放在 examples/generated_expressions/，不要使用 JS 的 .map/.filter。",
+      "expected_output": "应使用 User.usersWithRole(Array.of(...)) 与 Array.isEmpty(...) 或 Array.isNotEmpty(...) 这类来源中明确存在的表达式函数，不要使用 JS 数组字面量或 .map/.filter。",
       "files": []
     },
     {
       "id": 18,
       "prompt": "写一个表达式：让 approverList.map(...) 并拼接成字符串。",
-      "expected_output": "应拒绝 JS 风格 map，并解释表达式环境不支持 JS 数组函数；可以推荐使用 Array.join/Array.contains 替代，并引用表达式示例资产作为参考。",
+      "expected_output": "应拒绝 JS 风格 approverList.map(...)，并解释表达式环境不支持 JavaScript 数组实例方法；应优先改写或推荐 Array.map(list, key) 搭配 Array.join(..., ',') 这类 DSL 函数，并可引用表达式示例资产作为参考。",
+      "files": []
+    },
+    {
+      "id": 19,
+      "prompt": "帮我写一个织信脚本：根据部门ID查询应用成员，并在输出前确认代码语法没有明显错误。",
+      "expected_output": "应先输出基于已知 SDK 的合法 JavaScript 代码，并在非“只给代码”场景下补充语法自检结果，例如说明已检查括号闭合、字符串闭合和控制流结构；至少应体现生成代码前进行了语法自检。",
       "files": []
     }
   ]

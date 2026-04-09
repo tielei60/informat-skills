@@ -18,6 +18,8 @@
 
 高频规则与方法：
 
+- 以下方法是表达式 DSL 函数，不是 JavaScript 数组实例方法
+
 - `Array.of(...item)`
 - `Array.join(array, separator)`
 - `Array.length(list)`

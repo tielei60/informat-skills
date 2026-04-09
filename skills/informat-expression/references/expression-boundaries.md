@@ -24,7 +24,7 @@
 不要输出：
 
 - 箭头函数：`x => x.name`
-- 数组高阶方法：`.map(...)`、`.filter(...)`、`.reduce(...)`
+- JavaScript 对象方法式数组调用：`.map(...)`、`.filter(...)`、`.reduce(...)`
 - JS 数组字面量：`['a', 'b']`
 - 依赖 JS 对象操作的写法
 
@@ -35,11 +35,16 @@
 常见替代：
 
 - 数组构造：`Array.of(...)`
+- 属性提取：`Array.map(list, key)`
+- 条件过滤：`Array.filter(list, key, value)`
+- 结果拼接：`Array.join(array, separator)`
 - 字符串拼接：`String.concat(...)`
 - 条件逻辑：`A ? B : C`
 - 集合判断：`Array.containsAny(...)`、`Array.containsAll(...)`
 - 聚合：`Array.sum(...)`、`Array.avg(...)`、`Array.max(...)`、`Array.min(...)`
 - 日期计算：`Date.dateAdd(...)`、`Date.datePart(...)`、`Date.dateBefore(...)`、`Date.dateAfter(...)`
+
+注意：这里的 `Array.map(...)`、`Array.filter(...)` 是表达式 DSL 函数，不是 JavaScript 的数组实例方法。
 
 ## 四、日期函数的特殊点
 

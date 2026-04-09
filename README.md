@@ -38,6 +38,7 @@
 - 不杜撰 API
 - 遇到来源冲突会提示
 - 相似 API 会按语义选择命名空间
+- 最终输出前要求进行一次代码语法自检
 - 保存到本地时使用统一目录与命名规范
 
 ### `informat-expression`
@@ -51,7 +52,8 @@
 
 - 强制使用 `String.concat(...)`
 - 强制使用 `Array.of(...)`
-- 拒绝把 `map/filter/reduce`、箭头函数等 JS 写法塞进表达式
+- 拒绝把 JS 风格的 `.map/.filter/.reduce`、箭头函数等写法塞进表达式
+- 允许使用来源文档明确存在的 DSL 函数，例如 `Array.map(list, key)`、`Array.filter(list, key, value)`、`Array.join(...)`
 - 对日期函数的 0 基月份和星期取值做出约束
 
 ## 仓库结构
@@ -60,6 +62,8 @@
 skills/
   informat-script/
     SKILL.md
+    agents/
+      openai.yaml
     references/
       script-sdk.md
       script-safety.md
@@ -69,6 +73,8 @@ skills/
       script-examples.md
   informat-expression/
     SKILL.md
+    agents/
+      openai.yaml
     references/
       expression-rules.md
       expression-boundaries.md
@@ -87,6 +93,11 @@ examples/
     company/2026-03/add_company_member.js
     transaction/2026-03/update_user_role_with_transaction.js
     other/2026-03/generate_runtime_helper.js
+  generated_expressions/
+    2026-03/string_concat_example.txt
+    2026-03/date_month_zero_base.txt
+    2026-03/array_of_user_role.txt
+    2026-03/js_style_error.txt
 ```
 
 ## 安装
@@ -112,10 +123,12 @@ npx --yes skills add ./informat-skills --list
 ## 设计原则
 
 - 脚本与表达式分开建模，避免语法和规则互相污染
+- skill 内容与元数据统一使用中文，降低触发与维护时的语义偏差
 - 优先直接产出结果，而不是冗长讲解
 - 限制模型只能使用文档中明确存在的 Informat SDK
 - 正确性优先于“看起来完整”，来源冲突时采取保守写法
 - 不能实现时必须明确说明原因，禁止杜撰 API
+- 脚本输出前必须完成一次语法自检
 - 脚本输出默认带本地保存询问，并按统一目录规范管理文件
 - 保存到本地时优先生成可维护的文件头注释
 
@@ -218,6 +231,7 @@ generated_scripts/other/YYYY-MM/
 - 相似 API 混用，例如 `informat.system.addCompanyMember(...)` 与 `informat.company.addCompanyMember(...)`
 - 来源对同一 API 返回值或签名描述不一致，例如 `updateUserRole(...)`
 - 把 JS 写法误用到表达式里
+- 代码括号、字符串、控制流结构不完整导致的语法错误
 - 忽略表达式日期函数的特殊取值
 - 用户未指定字段、模块、角色时直接编造标识符
 
@@ -226,6 +240,7 @@ generated_scripts/other/YYYY-MM/
 - 先确认 API 是否存在
 - 来源冲突时不依赖冲突部分
 - 写操作优先用“执行后再查询”验证，不猜返回值
+- 输出代码前做一次语法自检
 - 不能确认时明确说不能确认
 
 ## 来源资料
@@ -236,6 +251,12 @@ generated_scripts/other/YYYY-MM/
 - 表达式 SDK 文档
 - 服务端类型定义
 - 客户端类型定义
+
+对齐原则：
+
+- `sources/informat.script.md` 与 `sources/informat.expression.md` 是方法存在性和语义边界的主来源
+- `sources/informat.d.ts` 与 `sources/informat.client.d.ts` 用于补充类型、签名和边缘能力
+- `skills/*/references/` 是从原始资料里提炼出的高频规则，不应与 `sources/` 冲突
 
 各 skill 的 `references/` 是对高频规则和高风险场景的提炼；遇到边缘能力时，应回到 `sources/` 查证。
 
@@ -279,7 +300,8 @@ examples/generated_expressions/
 - 合法字符串拼接：`String.concat(...)`
 - 0 基月份判断：`Date.datePart(..., 'month') == 0`
 - 数组包装场景：`Array.of(...)` 搭配 `User.usersWithRole(...)`
-- 拒绝 JS 风格 map/filter 或数组字面量的处理
+- 从 JS 风格 `items.map(...)` 改写为 DSL `Array.map(...)` / `Array.join(...)` 的处理
+- 拒绝数组字面量、箭头函数等越界写法
 - 如何把“正确写法”和“错误写法”都沉淀成可复用教学资产
 
 ## 评估覆盖
@@ -292,15 +314,16 @@ examples/generated_expressions/
 - 相似 API 选型
 - 返回值冲突
 - 未知 API 拒绝编造
-- 表达式 JS 越界
+- 表达式 JS 越界与 DSL 改写
 - 日期月份 0 基规则
 - 事务签名歧义
+- 代码输出前的语法自检要求
 - 默认保存询问
 - 已表达保存意图时直接落盘
 - “确认后放到本地”这类隐含保存意图识别
 - 无法稳定归类时放入 `other` 兜底目录
 - 本地保存规范对应的真实样例文件
-- 表达式示例资产对 String.concat、0 基月份、数组包装和 JS 越界的覆盖
+- 表达式示例资产对 String.concat、0 基月份、数组包装、DSL `Array.*` 和 JS 越界的覆盖
 
 ## 验证方式
 

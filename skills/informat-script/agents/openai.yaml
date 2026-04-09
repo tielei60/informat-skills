@@ -1,0 +1,4 @@
+interface:
+  display_name: "织信脚本生成"
+  short_description: "生成更稳妥的织信脚本 SDK 代码"
+  default_prompt: "使用 $informat-script 生成遵守文档边界、并在输出前完成语法自检的织信脚本。"
