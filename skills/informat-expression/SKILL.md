@@ -1,6 +1,6 @@
 ---
 name: informat-expression
-description: 当用户要求编写织信 / Informat UEL 表达式时使用，适用于审批条件、流转条件、实例名称、自动完成规则、表单公式、仪表盘公式、API 返回模板或 `${...}` 片段，尤其适用于提到 `String.concat`、`Array.of`、`Date.datePart`、`User.usersWithRole`，或无法判断该用表达式还是脚本的场景。
+description: 当用户要求编写织信 / Informat UEL 表达式时使用，包括审批条件、流转条件、实例名称、自动完成规则、表单或仪表盘公式、API 返回模板、`${...}` 片段，或提到 `String.concat`、`Array.of`、`Date.datePart`、`User.usersWithRole`，或无法判断该用表达式还是脚本。
 ---
 
 # Informat Expression
@@ -19,6 +19,10 @@ description: 当用户要求编写织信 / Informat UEL 表达式时使用，适
 如果需要完整函数定义、`User.*`/`Date.*` 边缘能力或 DSL 细节，再查：
 
 - `../../sources/informat.expression.md`
+
+如果用户要求示例资产、存档位置或“展示一个示例”，优先查：
+
+- `../../examples/generated_expressions/`
 
 ## 适用场景
 
@@ -88,9 +92,21 @@ ${ Array.first(User.usersWithRole(Array.of('researcher'))) }
 
 1. 最终表达式
 2. 必要时补一句适用说明或 DSL 替代写法
-3. 若无法实现，单独列出原因，并建议改用脚本
+3. 用户要求示例资产或存档位置时，补充相关文件路径
+4. 若无法实现，单独列出原因，并建议改用脚本
 
 如果用户要求多个候选表达式，就给多个合法版本，并说明差异。
+
+## 示例资产
+
+当用户要求查看、引用或说明示例资产时，使用 `examples/generated_expressions/YYYY-MM/` 下的文件：
+
+- 字符串拼接 / 审批编号：`examples/generated_expressions/2026-03/string_concat_example.txt`
+- 0 基月份判断：`examples/generated_expressions/2026-03/date_month_zero_base.txt`
+- `User.usersWithRole` 与 `Array.of`：`examples/generated_expressions/2026-03/array_of_user_role.txt`
+- JS 风格 `.map(...)` 反例：`examples/generated_expressions/2026-03/js_style_error.txt`
+
+如果日期或月份目录变化，先用当前仓库里的 `examples/generated_expressions/` 实际文件为准。
 
 ## 什么时候不要继续硬写表达式
 

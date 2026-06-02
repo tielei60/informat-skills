@@ -6,7 +6,7 @@
  * 需替换项：user_id, role_key_list
  */
 
-function updateUserRole(userId, roleList) {
+export function updateUserRole(userId, roleList) {
   if (!userId) {
     informat.app.abort('缺少用户ID');
   }

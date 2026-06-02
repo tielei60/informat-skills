@@ -9,6 +9,7 @@
 高风险例子：
 
 - `informat.system.addCompanyMember(companyId, accountId, departmentList, roleList)`
+- `informat.system.addCompanyMember(companyId, accountId, departmentOidList, roleKeyList, isSwitch)`
 - `informat.company.addCompanyMember(accountId, departmentList, roleList)`
 
 防错规则：
@@ -16,12 +17,14 @@
 - 涉及明确 `companyId`、跨团队、系统级操作时，优先考虑 `informat.system.*`
 - 涉及当前团队上下文时，优先考虑 `informat.company.*`
 - 如果用户没有说清“当前团队”还是“指定团队”，要在输出说明里标出假设
+- 如果使用系统级 5 参 `addCompanyMember`，必须确认部门参数是部门 OID 还是部门 ID、角色参数是 role key 还是 role id，并确认是否要切换团队
 
 ## 二、来源冲突时，不要依赖冲突部分
 
 已知冲突例子：
 
 - `updateUserRole(userId, roleList)` 在一份来源中表现为 `void`，另一份为 `number`
+- `aiagent.completions(...)` 的参数命名和内容类型发生过变化，当前类型定义为 `content: Array<AiAgentContent>`
 
 防错规则：
 
@@ -42,6 +45,12 @@ var user = informat.user.getUser(userId);
 ```
 
 如果确实需要确认变更结果，优先追加查询，而不是假设返回值类型。
+
+AI Agent 调用防错：
+
+- 不要再使用旧的 `AiAgentContentMessage` 类型名
+- 不要把参数写成 `messageList`
+- `AiAgentContent` 只摘要为 `type`、`text`、`imageUrl`；复杂聊天结构要回查原始类型定义
 
 ## 三、写操作默认要做前置校验
 
@@ -80,7 +89,16 @@ var user = informat.user.getUser(userId);
 - `storage.*`
 - `survey.*`
 - `FtpClient`
+- `Wework`
+- `Pdf`
+- `codec.*` 加密、签名、3DES、RSA
+- `aiagent.*`
+- `excel.*` 批注、水印、模板和共享存储文件
+- `designer.getRefEntity()`
+- `table.validateFormBySetting(...)`
+- `bpmn.*` 流程定义对象、版本切换、任务/实例查询
 - 事务相关接口
+- `JDBCConnection.callProcedure*` 和 `ProcParam`
 
 特别注意事务接口可能存在多种调用形态：
 
@@ -88,6 +106,8 @@ var user = informat.user.getUser(userId);
 - 带状态形态：`commit(status)`、`rollback(status)`
 
 如果需求明确涉及事务开启、提交、回滚流程，必须回查原始签名后再生成，不要把两种写法混在一起。
+
+如果需求明确涉及存储过程、LDAP、企业微信客户群、PDF、Excel 批注/水印、工作流版本切换、AI Agent 多模态内容，也必须回查原始签名后再生成。
 
 当需求涉及这些能力时，应回查：
 

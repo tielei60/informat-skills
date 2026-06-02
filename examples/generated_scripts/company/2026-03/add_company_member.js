@@ -6,7 +6,7 @@
  * 需替换项：account_id, department_id_list, role_id_list
  */
 
-function addCompanyMember(accountId, departmentList, roleList) {
+export function addCompanyMember(accountId, departmentList, roleList) {
   if (!accountId) {
     informat.app.abort('缺少账号ID');
   }

@@ -114,6 +114,60 @@
       "prompt": "帮我写一个织信脚本：根据部门ID查询应用成员，并在输出前确认代码语法没有明显错误。",
       "expected_output": "应先输出基于已知 SDK 的合法 JavaScript 代码，并在非“只给代码”场景下补充语法自检结果，例如说明已检查括号闭合、字符串闭合和控制流结构；至少应体现生成代码前进行了语法自检。",
       "files": []
+    },
+    {
+      "id": 20,
+      "prompt": "帮我写一个织信脚本函数，后面要绑定给 API 和定时任务调用。",
+      "expected_output": "应使用 ES Module 形式显式导出入口函数，例如 export function xxx(...)；不得使用 module.exports 或 CommonJS exports；内部 helper 才可以不导出。",
+      "files": []
+    },
+    {
+      "id": 21,
+      "prompt": "帮我修改织信平台里已有的 news.js 脚本，补一个 getNewsDetail 方法。",
+      "expected_output": "应识别这是编辑已有平台脚本，必须先查询脚本列表或脚本内容，获取真实脚本 id 和完整内容，再按编辑模式保存并传入 id；不得因为只知道文件名 news.js 就新增同名脚本。",
+      "files": []
+    },
+    {
+      "id": 22,
+      "prompt": "写一个织信平台脚本，调用 $informat.table.query 查询数据。",
+      "expected_output": "应纠正为使用全局 informat 命名空间，例如 informat.table.query(...)；不得输出 $informat.*。",
+      "files": []
+    },
+    {
+      "id": 23,
+      "prompt": "帮我生成一个会超过 300 行的大型织信脚本文件并保存到平台脚本里。",
+      "expected_output": "应识别平台脚本单文件超过 300 行或 8000 字符必须拆分为多个脚本文件，并在保存前确认脚本 SDK、查询脚本列表和目录。",
+      "files": []
+    },
+    {
+      "id": 24,
+      "prompt": "帮我在织信设计器里执行刚保存的脚本函数 runJob，发布后也要说明怎么执行。",
+      "expected_output": "应区分设计器调试执行与已发布应用运行环境执行：设计器调试用于未发布脚本，已发布环境只执行随应用发布的脚本版本；两者都只能调用真实脚本文件 ID 中已 export 的函数。",
+      "files": []
+    },
+    {
+      "id": 25,
+      "prompt": "帮我写一个织信脚本调用 AI Agent，传入多段文本和图片内容。",
+      "expected_output": "应识别 aiagent.completions 当前使用 content: Array<AiAgentContent>，内容项包含 type、text、imageUrl；不得使用旧的 AiAgentContentMessage 或 messageList 参数名，复杂结构需回查 sources/informat.d.ts。",
+      "files": []
+    },
+    {
+      "id": 26,
+      "prompt": "写一个织信脚本：调用 JDBC 存储过程并读取出参。",
+      "expected_output": "应识别 JDBCConnection 新增 callProcedure/callProcedureFull 和 ProcParam；存储过程、出参或游标场景必须回查 sources/informat.d.ts 的 ProcParam/JDBCResultSet 签名，不应套用普通 update/select 写法。",
+      "files": []
+    },
+    {
+      "id": 27,
+      "prompt": "帮我用织信脚本切换某个工作流定义到指定版本。",
+      "expected_output": "应识别 bpmn.setProcessCurrentVersion(moduleKey, processDefineKey, versionId) 是写操作；需要先确认模块标识符、流程定义标识符和版本ID，可结合 getBpmnProcessVersionList 查询，不得杜撰版本ID。",
+      "files": []
+    },
+    {
+      "id": 28,
+      "prompt": "写脚本把某个账号加入指定团队，并且切换到这个团队。",
+      "expected_output": "应优先考虑 system.addCompanyMember 的 5 参重载 companyId、accountId、departmentOidList、roleKeyList、isSwitch；必须说明部门参数语义是 OID 还是现场实际 ID、角色参数是 role key，并确认 isSwitch=true。",
+      "files": []
     }
   ]
 }

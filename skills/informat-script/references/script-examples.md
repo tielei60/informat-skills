@@ -5,7 +5,7 @@
 ## 示例 1：按部门查询应用成员
 
 ```js
-function listUsersByDept(deptId) {
+export function listUsersByDept(deptId) {
   if (!deptId) {
     informat.app.abort('缺少部门ID');
   }
@@ -22,7 +22,7 @@ function listUsersByDept(deptId) {
 ## 示例 2：根据用户名查账号，不存在则终止
 
 ```js
-function requireAccountByUserName(userName) {
+export function requireAccountByUserName(userName) {
   if (!userName) {
     informat.app.abort('缺少用户名');
   }
@@ -39,7 +39,7 @@ function requireAccountByUserName(userName) {
 ## 示例 3：把应用成员加入指定角色
 
 ```js
-function updateUserRoles(userId, roleList) {
+export function updateUserRoles(userId, roleList) {
   if (!userId) {
     informat.app.abort('缺少用户ID');
   }
@@ -56,7 +56,7 @@ function updateUserRoles(userId, roleList) {
 ## 示例 4：当前团队上下文下添加团队成员
 
 ```js
-function addCurrentCompanyMember(accountId, departmentList, roleList) {
+export function addCurrentCompanyMember(accountId, departmentList, roleList) {
   if (!accountId) {
     informat.app.abort('缺少账号ID');
   }
@@ -72,7 +72,7 @@ function addCurrentCompanyMember(accountId, departmentList, roleList) {
 ## 示例 5：指定团队场景下添加团队成员
 
 ```js
-function addMemberToCompany(companyId, accountId, departmentList, roleList) {
+export function addMemberToCompany(companyId, accountId, departmentList, roleList) {
   if (!companyId) {
     informat.app.abort('缺少团队ID');
   }

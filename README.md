@@ -3,7 +3,7 @@
 面向织信 / Informat 低代码平台的技能仓库，当前提供两个可安装 skill：
 
 - `informat-script`
-  用于根据业务需求生成 Informat 平台脚本代码，并支持按统一规则保存到本地文件
+  用于根据业务需求生成 Informat 平台脚本代码，支持 ES Module 导出、平台脚本保存/编辑/执行规则，并支持按统一规则保存到本地文件
 - `informat-expression`
   用于生成合法的 Informat UEL 表达式、审批条件、流转条件和公式
 
@@ -15,12 +15,14 @@
 - 生成 UEL 表达式
 - 在已知 SDK 约束下输出更保守、更不容易误导的代码
 - 在生成脚本后按统一规范保存到本地目录
+- 保存、编辑、执行或绑定织信脚本时遵守平台脚本生命周期规则
 
 不适合：
 
 - 杜撰未出现在资料中的平台 API
 - 把 JavaScript 语法误写到表达式里
 - 在来源冲突未澄清时强行给出看似确定的结论
+- 用 `$informat`、`module.exports` 或虚构脚本 ID 生成平台脚本入口
 
 ## 当前提供的 Skill
 
@@ -31,11 +33,16 @@
 - 生成平台脚本
 - 优先输出可运行或可直接改造的 JavaScript 代码
 - 遇到 SDK 冲突时采用保守写法
+- 外部可调用函数使用 ES Module `export function`
+- 保存或编辑平台脚本前要求先查真实脚本 ID
 - 默认处理“是否保存到本地文件”的交互
 
 特点：
 
 - 不杜撰 API
+- 平台 API 统一使用全局 `informat`
+- 禁止用 `$informat`、`module.exports` 或 CommonJS `exports`
+- 覆盖工作流、AI Agent、企业微信、PDF、Excel、加密签名、JDBC 存储过程等类型定义补充能力
 - 遇到来源冲突会提示
 - 相似 API 会按语义选择命名空间
 - 最终输出前要求进行一次代码语法自检
@@ -67,6 +74,7 @@ skills/
     references/
       script-sdk.md
       script-safety.md
+      script-platform-lifecycle.md
       script-output-management.md
       script-file-header.md
       script-types.md
@@ -129,6 +137,8 @@ npx --yes skills add ./informat-skills --list
 - 正确性优先于“看起来完整”，来源冲突时采取保守写法
 - 不能实现时必须明确说明原因，禁止杜撰 API
 - 脚本输出前必须完成一次语法自检
+- 会被自动化、API、控件、AI Agent 或定时任务调用的脚本函数必须显式 `export`
+- 平台保存/编辑脚本时必须使用真实 `id` 和 `parentId`，不能用文件名、目录名或猜测值代替
 - 脚本输出默认带本地保存询问，并按统一目录规范管理文件
 - 保存到本地时优先生成可维护的文件头注释
 
@@ -228,6 +238,10 @@ generated_scripts/other/YYYY-MM/
 
 仓库当前重点防的是这几类错误：
 
+- 平台脚本入口未用 ES Module 导出，导致 API、自动化、控件、AI Agent 或定时任务无法识别
+- 把平台 API 写成 `$informat.*`，或用 `module.exports` / `exports` 导出
+- 编辑已有平台脚本时漏传真实 `id`，意外重复创建脚本文件
+- 把脚本文件名、目录 ID 或函数名误当成脚本文件 ID
 - 相似 API 混用，例如 `informat.system.addCompanyMember(...)` 与 `informat.company.addCompanyMember(...)`
 - 来源对同一 API 返回值或签名描述不一致，例如 `updateUserRole(...)`
 - 把 JS 写法误用到表达式里
@@ -238,6 +252,8 @@ generated_scripts/other/YYYY-MM/
 处理原则：
 
 - 先确认 API 是否存在
+- 平台脚本操作前先查询脚本列表/内容，获取真实 ID
+- 外部可调用入口使用 `export function`，内部 helper 才能不导出
 - 来源冲突时不依赖冲突部分
 - 写操作优先用“执行后再查询”验证，不猜返回值
 - 输出代码前做一次语法自检
@@ -280,6 +296,7 @@ examples/generated_scripts/
 - 展示标准目录结构
 - 展示 `snake_case` 文件命名
 - 展示文件头模板的实际样式
+- 展示平台外部入口函数使用 `export function`
 - 展示 `other` 兜底目录的真实落法
 
 为了对应表达式这类输出，仓库也提供了实验性的表达式样例资产：
@@ -318,6 +335,11 @@ examples/generated_expressions/
 - 日期月份 0 基规则
 - 事务签名歧义
 - 代码输出前的语法自检要求
+- ES Module 导出与 CommonJS 禁用
+- `$informat` 禁用
+- 平台脚本编辑必须使用真实脚本 ID
+- 平台脚本过长时按 300 行或 8000 字符拆分
+- 设计器执行与已发布环境执行的区分
 - 默认保存询问
 - 已表达保存意图时直接落盘
 - “确认后放到本地”这类隐含保存意图识别

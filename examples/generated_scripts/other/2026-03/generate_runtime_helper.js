@@ -6,7 +6,7 @@
  * 需替换项：无
  */
 
-function generateRuntimeHelper() {
+export function generateRuntimeHelper() {
   return {
     appId: informat.app.appId(),
     userId: informat.app.userId(),

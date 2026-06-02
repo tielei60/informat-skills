@@ -40,7 +40,7 @@
  * 需替换项：company_id, account_id, department_id_list, role_id_list
  */
 
-function addMemberToCompany(companyId, accountId, departmentList, roleList) {
+export function addMemberToCompany(companyId, accountId, departmentList, roleList) {
   if (!companyId) {
     informat.app.abort('缺少团队ID');
   }

@@ -11,43 +11,43 @@ declare interface DataSourceConnnectionSetting {
 declare interface survey {
   /**
    * 查询问卷调查
-   * @param moduleKey 模块标识符 
-   * @param defineId 问卷调查定义ID 
-   * @param bean 问卷调查对象 
-   * @returns 
+   * @param moduleKey 模块标识符
+   * @param defineId 问卷调查定义ID
+   * @param bean 问卷调查对象
+   * @returns
    */
   addSurvey(moduleKey: string, defineId: string, bean: SurveyItem): string;
   /**
    * 查询问卷调查
-   * @param moduleKey 模块标识符 
-   * @param defineId 问卷调查定义ID 
-   * @param filter 过滤条件 
-   * @returns 
+   * @param moduleKey 模块标识符
+   * @param defineId 问卷调查定义ID
+   * @param filter 过滤条件
+   * @returns
    */
   deleteSurvey(moduleKey: string, defineId: string, filter: Filter): number;
   /**
    * 查询问卷调查列表
-   * @param moduleKey 模块标识符 
-   * @param defineId 问卷调查定义ID 
-   * @param query 查询对象 
-   * @returns 
+   * @param moduleKey 模块标识符
+   * @param defineId 问卷调查定义ID
+   * @param query 查询对象
+   * @returns
    */
   querySurveyList(moduleKey: string, defineId: string, query: Query): Array<SurveyItem>;
   /**
    * 查询问卷调查列表数量
-   * @param moduleKey 模块标识符 
-   * @param defineId 问卷调查定义ID 
-   * @param filter 过滤条件 
-   * @returns 
+   * @param moduleKey 模块标识符
+   * @param defineId 问卷调查定义ID
+   * @param filter 过滤条件
+   * @returns
    */
   querySurveyListCount(moduleKey: string, defineId: string, filter: Filter): number;
   /**
    * 查询问卷调查
-   * @param moduleKey 模块标识符 
-   * @param defineId 问卷调查定义ID 
-   * @param item 问卷调查对象 
-   * @param filter 过滤条件 
-   * @returns 
+   * @param moduleKey 模块标识符
+   * @param defineId 问卷调查定义ID
+   * @param item 问卷调查对象
+   * @param filter 过滤条件
+   * @returns
    */
   updateSurvey(moduleKey: string, defineId: string, item: Record<string, Object>, filter: Filter): number;
 }
@@ -140,129 +140,135 @@ declare interface FtpClient {
 declare interface storage {
   /**
    * 转换文件格式
-   * @param sourcePath 源文件路径 
-   * @param targetPath 目标文件路径 
-   * @param setting 转换设置 
-   * @returns 
+   * @param sourcePath 源文件路径
+   * @param targetPath 目标文件路径
+   * @param setting 转换设置
+   * @returns
    */
   convertFormat(sourcePath: string, targetPath: string, setting: ConvertFormatSetting): void;
   /**
    * 转换文件格式
-   * @param sourcePath 源文件路径 
-   * @param targetPath 目标文件路径 
-   * @param onlyofficeServiceUrl onlyoffice服务地址 
-   * @param setting 转换设置 
-   * @returns 
+   * @param sourcePath 源文件路径
+   * @param targetPath 目标文件路径
+   * @param onlyofficeServiceUrl onlyoffice服务地址
+   * @param setting 转换设置
+   * @returns
    */
   convertFormat(sourcePath: string, targetPath: string, onlyofficeServiceUrl: string, setting: ConvertFormatSetting): void;
   /**
    * 通过url进行转换文件
-   * @param sourceURL 源文件url 
-   * @param targetPath 目标文件路径 
-   * @param setting 转换设置 
-   * @returns 
+   * @param sourceURL 源文件url
+   * @param targetPath 目标文件路径
+   * @param setting 转换设置
+   * @returns
    */
   convertFormatFromURL(sourceURL: string, targetPath: string, setting: ConvertFormatSetting): void;
   /**
    * 通过url进行转换文件
-   * @param sourceURL 源文件url 
-   * @param targetPath 目标文件路径 
-   * @param onlyofficeServiceUrl onlyoffice服务地址 
-   * @param setting 转换设置 
-   * @returns 
+   * @param sourceURL 源文件url
+   * @param targetPath 目标文件路径
+   * @param onlyofficeServiceUrl onlyoffice服务地址
+   * @param setting 转换设置
+   * @returns
    */
   convertFormatFromURL(sourceURL: string, targetPath: string, onlyofficeServiceUrl: string, setting: ConvertFormatSetting): void;
   /**
    * 将指定路径下的文件拷贝到目标路径下。注意：如果目标路径存在同名文件，将覆盖同名文件
-   * @param sourcePath 源文件路径 
-   * @param targetPath 目标路径 
-   * @returns 
+   * @param sourcePath 源文件路径
+   * @param targetPath 目标路径
+   * @returns
    */
   copy(sourcePath: string, targetPath: string): void;
   /**
    * 生成文件下载地址
-   * @param fileToken 文件token 
-   * @returns 
+   * @param fileToken 文件token
+   * @returns
    */
   createFileDownloadUrl(fileToken: string): string;
   /**
    * 生成文件下载地址
-   * @param fileToken 文件token 
-   * @param host 主机地址 
-   * @returns 
+   * @param fileToken 文件token
+   * @param host 主机地址
+   * @returns
    */
   createFileDownloadUrl(fileToken: string, host: string): string;
   /**
    * 创建文件token
-   * @param sourcePath 源文件路径 
-   * @param fileName 文件名 
-   * @param expireTime 过期时间 
-   * @returns 
+   * @param sourcePath 源文件路径
+   * @param fileName 文件名
+   * @param expireTime 过期时间
+   * @returns
    */
   createFileToken(sourcePath: string, fileName: string, expireTime: number): string;
   /**
    * 删除文件
-   * @param path 共享存储路径 
-   * @returns 
+   * @param path 共享存储路径
+   * @returns
    */
   delete(path: string): void;
   /**
    * 删除文件夹
-   * @param path 共享存储路径 
-   * @returns 
+   * @param path 共享存储路径
+   * @returns
    */
   deleteDirectory(path: string): void;
   /**
    * 下载文件
-   * @param path 共享存储路径 
-   * @param localPath 本地文件路径 
-   * @returns 
+   * @param path 共享存储路径
+   * @param localPath 本地文件路径
+   * @returns
    */
   download(path: string, localPath: string): void;
   /**
    * 判断文件是否存在
-   * @param path 共享存储路径 
-   * @returns 
+   * @param path 共享存储路径
+   * @returns
    */
   exists(path: string): boolean;
   /**
    * 获取文件base64内容
-   * @param path 共享存储路径 
-   * @returns 
+   * @param path 共享存储路径
+   * @returns
    */
   getBase64Content(path: string): string;
   /**
    * 获取文件内容
-   * @param path 共享存储路径 
-   * @returns 
+   * @param path 共享存储路径
+   * @returns
+   */
+  getByteArrayContent(path: string): Array<any>;
+  /**
+   * 获取文件内容
+   * @param path 共享存储路径
+   * @returns
    */
   getContent(path: string): string;
   /**
    * 获取文件路径
-   * @param tableKey 数据表标识符 
-   * @param fieldKey 字段标识符 
-   * @param fileId 文件ID 
-   * @returns 
+   * @param tableKey 数据表标识符
+   * @param fieldKey 字段标识符
+   * @param fileId 文件ID
+   * @returns
    */
   getFilePath(tableKey: string, fieldKey: string, fileId: string): string;
   /**
    * 列出文件
-   * @param path 共享存储路径 
-   * @returns 
+   * @param path 共享存储路径
+   * @returns
    */
   listFile(path: string): Array<string>;
   /**
    * 上传文件
-   * @param localPath 本地文件路径 
-   * @param path 共享存储路径 
-   * @returns 
+   * @param localPath 本地文件路径
+   * @param path 共享存储路径
+   * @returns
    */
   upload(localPath: string, path: string): void;
   /**
    * 上传文件
-   * @param is 输入流 
-   * @param path 共享存储路径 
-   * @returns 
+   * @param is 输入流
+   * @param path 共享存储路径
+   * @returns
    */
   uploadStream(is: InputStream, path: string): void;
 }
@@ -270,113 +276,113 @@ declare interface storage {
 declare interface date {
   /**
    * 日期偏移
-   * @param d Date或Long 需要计算的日期或UNIX时间戳 
-   * @param type 偏移单位 
-   * @param diff 增加或者减少的值,如果为 null 则默认0 开始。增加则传递整数，减少则传递负数 
-   * @returns 
+   * @param d Date或Long 需要计算的日期或UNIX时间戳
+   * @param type 偏移单位
+   * @param diff 增加或者减少的值,如果为 null 则默认0 开始。增加则传递整数，减少则传递负数
+   * @returns
    */
   dateAdd(d: Object, type: string, diff: number): Date;
   /**
    * 判定日期d1是否在日期d2之前
-   * @param d1 Date或Long 日期1或UNIX时间戳 
-   * @param d2 日期2或UNIX时间戳 
-   * @returns 
+   * @param d1 Date或Long 日期1或UNIX时间戳
+   * @param d2 日期2或UNIX时间戳
+   * @returns
    */
   dateBefore(d1: Object, d2: Object): boolean;
   /**
    * 返回日期d中的type指定的部分
-   * @param d 需要计算的日期或UNIX时间戳 
-   * @param type 运算类型	type的取值为：年:year,月:month,天:day_of_year,月天数:day_of_month,周天数:day_of_week,小时:hour,分钟:minute,秒:second,毫秒:millisecond 
-   * @returns 
+   * @param d 需要计算的日期或UNIX时间戳
+   * @param type 运算类型	type的取值为：年:year,月:month,天:day_of_year,月天数:day_of_month,周天数:day_of_week,小时:hour,分钟:minute,秒:second,毫秒:millisecond
+   * @returns
    */
   datePart(d: Object, type: string): number;
   /**
    * 将日期转换为时间戳
-   * @param t 日期 
-   * @returns 
+   * @param t 日期
+   * @returns
    */
   dateToTimestamp(t: Date): number;
   /**
    * 从字符串解析日期
-   * @param date 日期字符串 
-   * @param format 日期格式 
-   * @returns 
+   * @param date 日期字符串
+   * @param format 日期格式
+   * @returns
    */
   format(date: Date, format: string): string;
   /**
    * 获取本周几对应的日期
-   * @param dayOfWeek 星期几1-7之前的数字 
-   * @returns 
+   * @param dayOfWeek 星期几1-7之前的数字
+   * @returns
    */
   getDateOfThisWeek(dayOfWeek: number): Date;
   /**
    * 获取本周一对应的日期
-   * @returns 
+   * @returns
    */
   getMonday(): Date;
   /**
    * 获取date所在周，周一对应的日期
-   * @param date 日期 
-   * @returns 
+   * @param date 日期
+   * @returns
    */
   getMonday(date: Date): Date;
   /**
    * 获取当前日期的0点0分0秒
-   * @returns 
+   * @returns
    */
   getStartOfDay(): Date;
   /**
    * 获取date日期的0点0分0秒
-   * @param date 日期 
-   * @returns 
+   * @param date 日期
+   * @returns
    */
   getStartOfDay(date: Date): Date;
   /**
    * 获取当前日期所在月的1号，如5月1号0点（小时、分钟、秒数、毫秒数都是0）
-   * @returns 
+   * @returns
    */
   getStartOfMonth(): Date;
   /**
    * 获取date日期所在月的1号，如果5月1号0点（小时、分钟、秒数、毫秒数都是0）
-   * @param date 日期 
-   * @returns 
+   * @param date 日期
+   * @returns
    */
   getStartOfMonth(date: Date): Date;
   /**
    * 获取当前日期所在年的元旦，如2025年1月1号0点（小时、分钟、秒数、毫秒数都是0）
-   * @returns 
+   * @returns
    */
   getStartOfYear(): Date;
   /**
    * 获取date日期所在年的元旦，如2025年1月1号0点（小时、分钟、秒数、毫秒数都是0）
-   * @param date 日期 
-   * @returns 
+   * @param date 日期
+   * @returns
    */
   getStartOfYear(date: Date): Date;
   /**
    * 判断是否是同一天
-   * @param date1 日期1 
-   * @param date2 日期2 
-   * @returns 
+   * @param date1 日期1
+   * @param date2 日期2
+   * @returns
    */
   isSameDay(date1: Date, date2: Date): boolean;
   /**
    * 格式化日期
-   * @param value 日期字符串 
-   * @param format 日期格式 
-   * @returns 
+   * @param value 日期字符串
+   * @param format 日期格式
+   * @returns
    */
   parse(value: string, format: string): Date;
   /**
    * 格式化日期
-   * @param value 日期字符串 
-   * @returns 
+   * @param value 日期字符串
+   * @returns
    */
   parseDate(value: string): Date;
   /**
    * 将时间戳转换为日期
-   * @param t 时间戳 
-   * @returns 
+   * @param t 时间戳
+   * @returns
    */
   timestampToDate(t: number): Date;
 }
@@ -384,37 +390,42 @@ declare interface date {
 declare interface designer {
   /**
    * 通过ID获取定义对象
-   * @param scope 作用域 
-   * @param id ID 
-   * @returns 
+   * @param scope 作用域
+   * @param id ID
+   * @returns
    */
   getDefineObject(scope: string, id: string): Object;
   /**
    * 通过标识符获取定义对象
-   * @param scope 作用域 
-   * @param key 标识符 
-   * @returns 
+   * @param scope 作用域
+   * @param key 标识符
+   * @returns
    */
   getDefineObjectByKey(scope: string, key: string): Object;
   /**
    * 通过ID获取定义对象
-   * @param query 查询条件 
-   * @returns 
+   * @param query 查询条件
+   * @returns
    */
   getDefineObjectList(query: DefineObjectQuery): Array<?>;
+  /**
+   * 查询引用关系列表
+   * @returns
+   */
+  getRefEntity(): Array<RefEntity>;
 }
 
 declare interface csv {
   /**
    * 从本地沙盒中读取csv文件,如果文件不存在将会抛出异常
-   * @param file 文件路径 
-   * @returns 
+   * @param file 文件路径
+   * @returns
    */
   reader(file: string): CsvReader;
   /**
    * 获取写csv文件的对象
-   * @param file 文件路径 
-   * @returns 
+   * @param file 文件路径
+   * @returns
    */
   writer(file: string): CsvWriter;
 }
@@ -422,21 +433,21 @@ declare interface csv {
 declare interface mpp {
   /**
    * 创建Mpp项目文件对象
-   * @returns 
+   * @returns
    */
   createProjectFile(): MppProjectFile;
   /**
    * 读取Mpp文件
-   * @param file 文件路径 
-   * @returns 
+   * @param file 文件路径
+   * @returns
    */
   read(file: string): MppProjectFile;
   /**
    * 写入数据到Mpp文件
-   * @param projectFile Mpp项目文件对象 
-   * @param targetFile 目标文件 
-   * @param config 配置 
-   * @returns 
+   * @param projectFile Mpp项目文件对象
+   * @param targetFile 目标文件
+   * @param config 配置
+   * @returns
    */
   write(projectFile: MppProjectFile, targetFile: string, config: MppWriterConfig): void;
 }
@@ -606,6 +617,10 @@ declare interface Account {
    */
   language: string;
   /**
+   * 最后登录时间
+   */
+  lastLoginTime: Date;
+  /**
    * 手机号
    */
   mobileNo: string;
@@ -719,7 +734,11 @@ declare interface PushEvent {
    */
   accountIdList: Array<string>;
   /**
-   * 事件ID，ModuleRefresh 刷新模块，RecordFormRefresh 刷新表单 ，Toast 显示提示信息
+   * 关闭模块访问历史页签类型，默认为current
+   */
+  closeModuleVisitHistoryType: string;
+  /**
+   * 事件ID，ModuleRefresh 刷新模块，RecordFormRefresh 刷新表单 ，Toast 显示提示信息，ClientRunScript 在客户端执行脚本，CloseModuleVisitHistory 关闭模块访问历史页签
    */
   eventId: string;
   /**
@@ -1036,8 +1055,8 @@ declare interface CustomRole {
 declare interface ldap {
   /**
    * 创建LDAP连接
-   * @param info LDAP连接信息 
-   * @returns 
+   * @param info LDAP连接信息
+   * @returns
    */
   connect(info: LdapConnectionInfo): LdapConnection;
 }
@@ -1045,32 +1064,32 @@ declare interface ldap {
 declare interface website {
   /**
    * 将资源下载到本地文件存储
-   * @param moduleKey 网站模块的标识符 
-   * @param path 资源路径 
-   * @param localPath 本地存储沙盒中的路径 
-   * @returns 
+   * @param moduleKey 网站模块的标识符
+   * @param path 资源路径
+   * @param localPath 本地存储沙盒中的路径
+   * @returns
    */
   download(moduleKey: string, path: string, localPath: string): void;
   /**
    * 通过路径获取资源
-   * @param moduleId 网站模块的标识符 
-   * @param path 资源路径 
-   * @returns 
+   * @param moduleId 网站模块的标识符
+   * @param path 资源路径
+   * @returns
    */
   getByPath(moduleId: string, path: string): WebsiteResource;
   /**
    * 获取资源的存储路径
-   * @param moduleKey 网站模块的标识符 
-   * @param resourcePath 资源路径 
-   * @returns 
+   * @param moduleKey 网站模块的标识符
+   * @param resourcePath 资源路径
+   * @returns
    */
   getStroagePath(moduleKey: string, resourcePath: string): string;
   /**
    * 根据父目录获取网站的资源列表
-   * @param moduleId 网站模块的标识符 
-   * @param path 资源路径 
-   * @param recursion 是否递归的返回所有下级 
-   * @returns 
+   * @param moduleId 网站模块的标识符
+   * @param path 资源路径
+   * @param recursion 是否递归的返回所有下级
+   * @returns
    */
   list(moduleId: string, path: string, recursion: boolean): Array<WebsiteResource>;
 }
@@ -1135,30 +1154,30 @@ declare interface File {
 declare interface jdbc {
   /**
    * 创建数据库连接
-   * @param connInfo 数据库连接信息 
-   * @returns 
+   * @param connInfo 数据库连接信息
+   * @returns
    */
   createConnection(connInfo: ConnnectionInfo): JDBCConnection;
   /**
    * 为记录生成唯一ID
-   * @returns 
+   * @returns
    */
   nextRecordId(): string;
   /**
    * 安全sql
-   * @param sql sql语句 
-   * @param params 参数 
-   * @returns 
+   * @param sql sql语句
+   * @param params 参数
+   * @returns
    */
   safesql(sql: string, params: Array<any>): string;
   /**
    * 获取系统的数据库连接
-   * @returns 
+   * @returns
    */
   systemConnection(): JDBCConnection;
   /**
    * 获取应用数据表的数据库连接
-   * @returns 
+   * @returns
    */
   tableConnection(): JDBCConnection;
 }
@@ -1166,7 +1185,7 @@ declare interface jdbc {
 declare interface ftp {
   /**
    * 创建ftp客户端
-   * @returns 
+   * @returns
    */
   createClient(): FtpClient;
 }
@@ -1504,13 +1523,19 @@ declare interface LdapListResult {
 
 declare interface LdapConnection {
   addAttribute(dn: string, attrs: Array<LdapModifyAttribute>): void;
+  addAttributeEncoded(dn: string, attrs: Array<LdapModifyAttribute>, encoding: string): void;
   close(): void;
+  createEntry(dn: string, attrs: Array<LdapModifyAttribute>): void;
   decodeSID(input: Object): string;
   deleteAttribute(dn: string, attrs: Array<LdapModifyAttribute>): void;
+  deleteAttributeEncoded(dn: string, attrs: Array<LdapModifyAttribute>, encoding: string): void;
+  deleteEntry(dn: string): void;
   getAttributes(dn: string): Array<LdapSearchResultAttribute>;
   list(name: string): Array<LdapListResult>;
+  renameEntry(oldDn: string, newDn: string): void;
   search(basedn: string, filter: string, lc: LdapSearchControl): Array<LdapSearchResult>;
   updateAttribute(dn: string, attrs: Array<LdapModifyAttribute>): void;
+  updateAttributeEncoded(dn: string, attrs: Array<LdapModifyAttribute>, encoding: string): void;
 }
 
 /**
@@ -1557,105 +1582,120 @@ declare interface WebsiteResource {
 declare interface codec {
   /**
    * 返回base64解码后的字节数组
-   * @param input 输入字符串 
-   * @returns 
+   * @param input 输入字符串
+   * @returns
    */
   base64Decode(input: string): Array<any>;
   /**
    * 返回base64解码后的字节数组
-   * @param input 输入字节数组 
-   * @returns 
+   * @param input 输入字节数组
+   * @returns
    */
   base64DecodeFromBytes(input: Array<any>): Array<any>;
   /**
    * 返回base64解码后的字符串
-   * @param input 输入字符串 
-   * @returns 
+   * @param input 输入字符串
+   * @returns
    */
   base64DecodeToString(input: string): string;
   /**
    * 获取str的base64编码
-   * @param input 输入字符串 
-   * @returns 
+   * @param input 输入字符串
+   * @returns
    */
   base64Encode(input: string): string;
   /**
    * 返回base64编码后的字符串
-   * @param bytes 输入字节数组 
-   * @returns 
+   * @param bytes 输入字节数组
+   * @returns
    */
   base64EncodeFromBytes(bytes: Array<any>): string;
   /**
    * 返回base64编码后的字节数组
-   * @param input 输入字符串 
-   * @returns 
+   * @param input 输入字符串
+   * @returns
    */
   base64EncodeToBytes(input: string): Array<any>;
+  generateRSAKey(): Record<string, string>;
   /**
    * 获取str的散列值
-   * @param input 输入字符串 
-   * @param method 散列算法 
-   * @returns 
+   * @param input 输入字符串
+   * @param method 散列算法
+   * @returns
    */
   hash(input: string, method: string): string;
   /**
    * RSA私钥解密
-   * @param data 数据 
-   * @param privateKey 公钥 
-   * @returns 
+   * @param data 数据
+   * @param privateKey 公钥
+   * @returns
    */
   rsaDecryptByPrivateKey(data: string, privateKey: string): string;
   /**
    * RSA公钥解密
-   * @param data 数据 
-   * @param publicKey 公钥 
-   * @returns 
+   * @param data 数据
+   * @param publicKey 公钥
+   * @returns
    */
   rsaDecryptByPublicKey(data: string, publicKey: string): string;
   /**
    * RSA私钥加密(返回编码为Base64字符串)
-   * @param data 数据 
-   * @param privateKey 私钥 
-   * @returns 
+   * @param data 数据
+   * @param privateKey 私钥
+   * @returns
    */
   rsaEncryptBase64ByPrivateKey(data: string, privateKey: string): string;
   /**
    * RSA公钥加密(返回编码为Base64字符串)
-   * @param data 数据 
-   * @param publicKey 公钥 
-   * @returns 
+   * @param data 数据
+   * @param publicKey 公钥
+   * @returns
    */
   rsaEncryptBase64ByPublicKey(data: string, publicKey: string): string;
   /**
    * RSA私钥加密(返回十六进制字符串)
-   * @param data 数据 
-   * @param privateKey 私钥 
-   * @returns 
+   * @param data 数据
+   * @param privateKey 私钥
+   * @returns
    */
   rsaEncryptHexByPrivateKey(data: string, privateKey: string): string;
   /**
    * RSA公钥加密(返回十六进制字符串)
-   * @param data 数据 
-   * @param publicKey 公钥 
-   * @returns 
+   * @param data 数据
+   * @param publicKey 公钥
+   * @returns
    */
   rsaEncryptHexByPublicKey(data: string, publicKey: string): string;
   /**
    * 使用签名算法对字符串进行签名
-   * @param input 输入字符串 
-   * @param method 签名算法 
-   * @param privateKey 私钥 
-   * @returns 
+   * @param input 输入字符串
+   * @param method 签名算法
+   * @param privateKey 私钥
+   * @returns
    */
   sign(input: string, method: string, privateKey: string): string;
   /**
    * 使用签名算法对字符串进行签名
-   * @param input 输入字符串 
-   * @param method 签名算法 
-   * @param publicKey 公钥 
-   * @returns 
+   * @param input 输入字符串
+   * @param method 签名算法
+   * @param publicKey 公钥
+   * @returns
    */
   signByPublicKey(input: string, method: string, publicKey: string): string;
+  /**
+   * 3Des解密
+   * @param base64Data 加密数据
+   * @param base64Key 密码
+   * @returns
+   */
+  tripleDESDecrypt(base64Data: string, base64Key: string): string;
+  /**
+   * 3Des加密
+   * @param data 数据
+   * @param base64Key 密码
+   * @returns
+   */
+  tripleDESEncrypt(data: string, base64Key: string): string;
 }
 
 declare interface ExcelCell {
@@ -1685,8 +1725,11 @@ declare interface ExcelSheet {
   addPictureBarcode(col1: number, row1: number, value: Object): ExcelPicture;
   addPictureQrcode(col1: number, row1: number, value: Object): ExcelPicture;
   addPictureStorage(col1: number, row1: number, storagePath: string): ExcelPicture;
+  addWatermark(text: string, fontSize: number, alpha: number, degree: number): void;
+  addWatermarkImage(imageBytes: Array<any>): void;
   autoSizeColumn(index: number): void;
   createRow(index: number): ExcelRow;
+  getAllComments(): Record<string, ExcelComment>;
   getColumnStyle(index: number): ExcelCellStyle;
   getColumnWidthInPixels(index: number): number;
   getDefaultColumnWidth(): number;
@@ -1698,6 +1741,7 @@ declare interface ExcelSheet {
   getRelations(): Array<POIXMLDocumentPart>;
   getRow(index: number): ExcelRow;
   getSheetName(): string;
+  removeCellComment(rowIndex: number, colIndex: number): void;
   removeRow(row: ExcelRow): void;
   setColumnWidth(index: number, width: number): void;
   setDefaultColumnStyle(index: number, cs: ExcelCellStyle): void;
@@ -1763,8 +1807,10 @@ declare interface ExcelCellEntity {
 
 declare interface ExcelRow {
   createCell(index: number): ExcelCell;
+  createCellComment(colIndex: number): ExcelComment;
   createCellWithValue(index: number, v: Object): ExcelCell;
   getCell(index: number): ExcelCell;
+  getCellComment(colIndex: number): ExcelComment;
   getFirstCellNum(): number;
   getHeightInPoints(): number;
   getLastCellNum(): number;
@@ -1856,6 +1902,14 @@ declare interface ExcelObjectData {
   saveStorage(path: string): void;
 }
 
+declare interface ExcelComment {
+  getAuthor(): string;
+  getContent(): string;
+  getNativeComment(): Object;
+  setAuthor(author: string): void;
+  setContent(content: string): void;
+}
+
 declare interface ExcelFont {
   getBold(): boolean;
   getColor(): string;
@@ -1898,57 +1952,57 @@ declare interface ExcelImageEntity {
 declare interface dept {
   /**
    * 新增部门
-   * @param dept 部门信息 
-   * @returns 
+   * @param dept 部门信息
+   * @returns
    */
   addDept(dept: Department): string;
   /**
    * 删除部门
-   * @param deptId 部门ID 
-   * @returns 
+   * @param deptId 部门ID
+   * @returns
    */
   deleteDept(deptId: string): number;
   /**
    * 查询所有的下级部门
-   * @param deptId 部门ID 
-   * @returns 
+   * @param deptId 部门ID
+   * @returns
    */
   getChildrenOfDept(deptId: string): Array<Department>;
   /**
    * 查询部门信息
-   * @param deptId 部门ID 
-   * @returns 
+   * @param deptId 部门ID
+   * @returns
    */
   getDept(deptId: string): Department;
   /**
    * 查询直接下级部门
-   * @param deptId 部门ID 
-   * @returns 
+   * @param deptId 部门ID
+   * @returns
    */
   getDirectChildrenOfDept(deptId: string): Array<Department>;
   /**
    * 查询部门的所有上级部门
-   * @param deptId 部门ID 
-   * @returns 
+   * @param deptId 部门ID
+   * @returns
    */
   getParentOfDept(deptId: string): Array<Department>;
   /**
    * 查询部门列表
-   * @param query 查询条件 
-   * @returns 
+   * @param query 查询条件
+   * @returns
    */
   queryDeptList(query: Query): Array<Department>;
   /**
    * 查询部门列表总数
-   * @param filter 查询条件 
-   * @returns 
+   * @param filter 查询条件，必填；无过滤条件时传 {}，不要省略
+   * @returns
    */
   queryDeptListCount(filter: Filter): number;
   /**
    * 更新部门
-   * @param dept 部门信息 
-   * @param updateFields 更新字段 
-   * @returns 
+   * @param dept 部门信息
+   * @param updateFields 更新字段
+   * @returns
    */
   updateDept(dept: Department, updateFields: Array<string>): number;
 }
@@ -1992,491 +2046,499 @@ declare interface SftpFileAttr {
 declare interface table {
   /**
    * 添加表单评论
-   * @param tableId 数据表标识符 
-   * @param tableComment 表单评论 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param tableComment 表单评论
+   * @returns
    */
   addComment(tableId: string, tableComment: TableCommentForm): number;
   /**
    * 添加关联列表值
-   * @param tableId 数据表模块的标识符 
-   * @param relationFieldId 关联列表字段 
-   * @param recordId 主表的记录ID 
-   * @param relationRecordId 关联列表的记录ID 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param relationFieldId 关联列表字段
+   * @param recordId 主表的记录ID
+   * @param relationRecordId 关联列表的记录ID
+   * @returns
    */
   addRelation(tableId: string, relationFieldId: string, recordId: string, relationRecordId: string): number;
   /**
    * 批量删除记录
-   * @param tableId 数据表模块的标识符 
-   * @param idList 记录ID列表 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param idList 记录ID列表
+   * @returns
    */
   batchDelete(tableId: string, idList: Array<string>): number;
   /**
    * 批量创建记录
-   * @param tableId 数据表模块的标识符 
-   * @param rowData 需要创建的记录列表 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param rowData 需要创建的记录列表
+   * @returns
    */
   batchInsert(tableId: string, rowData: Array<Record<string, Object>>): number;
   /**
    * 批量更新记录
-   * @param tableId 数据表模块的标识符 
-   * @param rowData 需要更新的记录列表 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param rowData 需要更新的记录列表
+   * @returns
    */
   batchUpdate(tableId: string, rowData: Array<Record<string, Object>>): number;
   /**
    * 拷贝附件字段的文件到目标字段
-   * @param sourceTableId 源数据表的标识符 
-   * @param sourceFieldId 源字段的标识符 
-   * @param targetTableId 目标数据表的标识符 
-   * @param targetFieldId 目标字段的标识符 
-   * @param attachment 附件对象 
-   * @returns 
+   * @param sourceTableId 源数据表的标识符
+   * @param sourceFieldId 源字段的标识符
+   * @param targetTableId 目标数据表的标识符
+   * @param targetFieldId 目标字段的标识符
+   * @param attachment 附件对象
+   * @returns
    */
   cloneAttachment(sourceTableId: string, sourceFieldId: string, targetTableId: string, targetFieldId: string, attachment: TableAttachment): TableAttachment;
   /**
    * 拷贝手写签名字段的文件到目标字段
-   * @param sourceTableId 源数据表的标识符 
-   * @param sourceFieldId 源字段的标识符 
-   * @param targetTableId 目标数据表的标识符 
-   * @param targetFieldId 目标字段的标识符 
-   * @param signature 手写签名对象 
-   * @returns 
+   * @param sourceTableId 源数据表的标识符
+   * @param sourceFieldId 源字段的标识符
+   * @param targetTableId 目标数据表的标识符
+   * @param targetFieldId 目标字段的标识符
+   * @param signature 手写签名对象
+   * @returns
    */
   cloneTableSignature(sourceTableId: string, sourceFieldId: string, targetTableId: string, targetFieldId: string, signature: TableSignature): TableSignature;
   /**
    * 使用本地沙盒中的文件生成附件
-   * @param tableId 数据表的标识符 
-   * @param fieldId 附件字段的标识符 
-   * @param path 本地沙盒中的文件路径 
-   * @returns 
+   * @param tableId 数据表的标识符
+   * @param fieldId 附件字段的标识符
+   * @param path 本地沙盒中的文件路径
+   * @returns
    */
   createAttachment(tableId: string, fieldId: string, path: string): TableAttachment;
   /**
    * 使用远程存储中的文件生成附件
-   * @param tableId 数据表的标识符 
-   * @param fieldKey 附件字段的标识符 
-   * @param path 远程存储中的文件路径 
-   * @returns 
+   * @param tableId 数据表的标识符
+   * @param fieldKey 附件字段的标识符
+   * @param path 远程存储中的文件路径
+   * @returns
    */
   createAttachmentStorage(tableId: string, fieldKey: string, path: string): TableAttachment;
   /**
    * 删除单条记录
-   * @param tableKey 数据表模块的标识符 
-   * @param recordId 需要删除的记录ID 
-   * @returns 
+   * @param tableKey 数据表模块的标识符
+   * @param recordId 需要删除的记录ID
+   * @returns
    */
   delete(tableKey: string, recordId: string): number;
   /**
    * 删除表单评论
-   * @param tableId 数据表标识符 
-   * @param id 表单评论Id 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param id 表单评论Id
+   * @returns
    */
   deleteComment(tableId: string, id: number): void;
   /**
    * 根据配置信息删除记录
-   * @param tableId 数据表模块的标识符 
-   * @param recordId 需要删除的记录ID 
-   * @param config 配置信息 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param recordId 需要删除的记录ID
+   * @param config 配置信息
+   * @returns
    */
   deleteEx(tableId: string, recordId: string, config: DeleteRecordConfig): number;
   /**
    * 根据条件删除多条记录
-   * @param tableId 数据表模块的标识符 
-   * @param filter 过滤条件 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param filter 过滤条件
+   * @returns
    */
   deleteList(tableId: string, filter: Filter): number;
   /**
    * 根据条件和配置删除多条记录
-   * @param tableId 数据表模块的标识符 
-   * @param filter 过滤条件 
-   * @param config 配置信息 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param filter 过滤条件
+   * @param config 配置信息
+   * @returns
    */
   deleteListEx(tableId: string, filter: Filter, config: DeleteRecordConfig): number;
   /**
    * 删除关联列表值
-   * @param tableId 数据表模块的标识符 
-   * @param relationFieldId 关联列表字段 
-   * @param recordId 主表的记录ID 
-   * @param relationRecordId 关联列表的记录ID 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param relationFieldId 关联列表字段
+   * @param recordId 主表的记录ID
+   * @param relationRecordId 关联列表的记录ID
+   * @returns
    */
   deleteRelation(tableId: string, relationFieldId: string, recordId: string, relationRecordId: string): boolean;
   /**
    * 查询编号字段当前自增序号
-   * @param tableId 数据表标识符 
-   * @param fieldId 编号字段标识符 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param fieldId 编号字段标识符
+   * @returns
    */
   getIdFieldSeq(tableId: string, fieldId: string): number;
   /**
    * 查询关联列表中存在指定记录的记录列表
-   * @param tableId 数据表模块的标识符 
-   * @param relationFieldId 关联列表字段的ID 
-   * @param relationId 子表的记录ID 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param relationFieldId 关联列表字段的ID
+   * @param relationId 子表的记录ID
+   * @returns
    */
   getRelationRecordIdList(tableId: string, relationFieldId: string, relationId: string): Array<string>;
   /**
    * 查询数据表字段信息
-   * @param tableId 数据表模块的标识符 
-   * @param fieldId 数据表字段的标识符 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param fieldId 数据表字段的标识符
+   * @returns
    */
   getTableFieldInfo(tableId: string, fieldId: string): TableFieldInfo;
   /**
    * 查询数据表信息
-   * @param tableId 数据表模块的标识符 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @returns
    */
   getTableInfo(tableId: string): TableInfo;
   /**
    * 查询记录是否在关联列表中
-   * @param tableId 数据表模块的标识符 
-   * @param relationFieldId 关联列表字段 
-   * @param recordId 主表的记录ID 
-   * @param relationRecordIdList 关联记录的记录ID列表 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param relationFieldId 关联列表字段
+   * @param recordId 主表的记录ID
+   * @param relationRecordIdList 关联记录的记录ID列表
+   * @returns
    */
   hasRelation(tableId: string, relationFieldId: string, recordId: string, relationRecordIdList: Array<string>): Array<string>;
   /**
    * 创建记录
-   * @param tableId 数据表模块的标识符 
-   * @param rowData 需要创建的记录 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param rowData 需要创建的记录
+   * @returns
    */
   insert(tableId: string, rowData: Record<string, Object>): string;
   /**
    * 根据配置信息创建记录
-   * @param tableId 数据表模块的标识符 
-   * @param rowData 需要创建的记录 
-   * @param config 配置信息 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param rowData 需要创建的记录
+   * @param config 配置信息
+   * @returns
    */
   insertEx(tableId: string, rowData: Record<string, Object>, config: InsertRecordConfig): string;
   /**
    * 移动附件字段的文件到目标附件字段
-   * @param sourceTableId 源数据表的标识符 
-   * @param sourceFieldId 源字段的标识符 
-   * @param targetTableId 目标数据表的标识符 
-   * @param targetFieldId 目标字段的标识符 
-   * @param attachment 附件对象 
-   * @returns 
+   * @param sourceTableId 源数据表的标识符
+   * @param sourceFieldId 源字段的标识符
+   * @param targetTableId 目标数据表的标识符
+   * @param targetFieldId 目标字段的标识符
+   * @param attachment 附件对象
+   * @returns
    */
   moveAttachment(sourceTableId: string, sourceFieldId: string, targetTableId: string, targetFieldId: string, attachment: TableAttachment): TableAttachment;
   /**
    * 移动子对象里的记录
-   * @param tableId 主表数据表标识符 
-   * @param childrenFieldId 子对象字段 
-   * @param mainRecordId 主表记录ID 
-   * @param recordId 子表记录ID 
-   * @param targetRecordId 子表目标记录ID 
-   * @param type 移动方式 
-   * @returns 
+   * @param tableId 主表数据表标识符
+   * @param childrenFieldId 子对象字段
+   * @param mainRecordId 主表记录ID
+   * @param recordId 子表记录ID
+   * @param targetRecordId 子表目标记录ID
+   * @param type 移动方式
+   * @returns
    */
   moveChildrenFieldRecord(tableId: string, childrenFieldId: string, mainRecordId: string, recordId: string, targetRecordId: string, type: string): void;
   /**
    * 子对象字段树形视图下移动记录
-   * @param tableId 主表数据表标识符 
-   * @param mainChildrenFieldId 子对象字段 
-   * @param childrenFieldId 树形视图里的子对象字段 
-   * @param mainRecordId 主表记录ID 
-   * @param recordId 子表记录ID 
-   * @param parentRecordId 父对象ID 
-   * @param targetRecordId 子表目标记录ID 
-   * @param type 拖拽方式 
-   * @returns 
+   * @param tableId 主表数据表标识符
+   * @param mainChildrenFieldId 子对象字段
+   * @param childrenFieldId 树形视图里的子对象字段
+   * @param mainRecordId 主表记录ID
+   * @param recordId 子表记录ID
+   * @param parentRecordId 父对象ID
+   * @param targetRecordId 子表目标记录ID
+   * @param type 拖拽方式
+   * @returns
    */
   moveChildrenFieldTreeViewRecord(tableId: string, mainChildrenFieldId: string, childrenFieldId: string, mainRecordId: string, recordId: string, parentRecordId: string, targetRecordId: string, type: string): void;
   /**
    * 移动查找列表里的记录
-   * @param tableId 主表数据表标识符 
-   * @param lookupFieldId 查找列表字段 
-   * @param mainRecordId 主表记录ID 
-   * @param recordId 子表记录ID 
-   * @param targetRecordId 子表目标记录ID 
-   * @param type 移动方式 
-   * @returns 
+   * @param tableId 主表数据表标识符
+   * @param lookupFieldId 查找列表字段
+   * @param mainRecordId 主表记录ID
+   * @param recordId 子表记录ID
+   * @param targetRecordId 子表目标记录ID
+   * @param type 移动方式
+   * @returns
    */
   moveLookupFieldRecord(tableId: string, lookupFieldId: string, mainRecordId: string, recordId: string, targetRecordId: string, type: string): void;
   /**
    * 查找列表字段树形视图下移动记录
-   * @param tableId 主表数据表标识符 
-   * @param lookupFieldId 查找列表字段 
-   * @param childrenFieldId 树形视图里的子对象字段 
-   * @param mainRecordId 主表记录ID 
-   * @param recordId 子表记录ID 
-   * @param parentRecordId 父对象ID 
-   * @param targetRecordId 子表目标记录ID 
-   * @param type 拖拽方式 
-   * @returns 
+   * @param tableId 主表数据表标识符
+   * @param lookupFieldId 查找列表字段
+   * @param childrenFieldId 树形视图里的子对象字段
+   * @param mainRecordId 主表记录ID
+   * @param recordId 子表记录ID
+   * @param parentRecordId 父对象ID
+   * @param targetRecordId 子表目标记录ID
+   * @param type 拖拽方式
+   * @returns
    */
   moveLookupFieldTreeViewRecord(tableId: string, lookupFieldId: string, childrenFieldId: string, mainRecordId: string, recordId: string, parentRecordId: string, targetRecordId: string, type: string): void;
   /**
    * 移动记录
-   * @param tableId 数据表标识符 
-   * @param recordId 记录ID 
-   * @param targetRecordId 目标记录ID 
-   * @param type 拖拽方式 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param recordId 记录ID
+   * @param targetRecordId 目标记录ID
+   * @param type 拖拽方式
+   * @returns
    */
   moveRecord(tableId: string, recordId: string, targetRecordId: string, type: string): void;
   /**
    * 移动关联列表里的记录
-   * @param tableId 主表数据表标识符 
-   * @param relationFieldId 关联列表字段 
-   * @param mainRecordId 主表记录ID 
-   * @param recordId 子表记录ID 
-   * @param targetRecordId 子表目标记录ID 
-   * @param type 移动方式 
-   * @returns 
+   * @param tableId 主表数据表标识符
+   * @param relationFieldId 关联列表字段
+   * @param mainRecordId 主表记录ID
+   * @param recordId 子表记录ID
+   * @param targetRecordId 子表目标记录ID
+   * @param type 移动方式
+   * @returns
    */
   moveRelationFieldRecord(tableId: string, relationFieldId: string, mainRecordId: string, recordId: string, targetRecordId: string, type: string): void;
   /**
    * 关联列表字段树形视图下移动记录
-   * @param tableId 主表数据表标识符 
-   * @param relationFieldId 关联列表字段 
-   * @param childrenFieldId 树形视图里的子对象字段 
-   * @param mainRecordId 主表记录ID 
-   * @param recordId 子表记录ID 
-   * @param parentRecordId 父对象ID 
-   * @param targetRecordId 子表目标记录ID 
-   * @param type 拖拽方式 
-   * @returns 
+   * @param tableId 主表数据表标识符
+   * @param relationFieldId 关联列表字段
+   * @param childrenFieldId 树形视图里的子对象字段
+   * @param mainRecordId 主表记录ID
+   * @param recordId 子表记录ID
+   * @param parentRecordId 父对象ID
+   * @param targetRecordId 子表目标记录ID
+   * @param type 拖拽方式
+   * @returns
    */
   moveRelationFieldTreeViewRecord(tableId: string, relationFieldId: string, childrenFieldId: string, mainRecordId: string, recordId: string, parentRecordId: string, targetRecordId: string, type: string): void;
   /**
    * 树形视图下移动记录
-   * @param tableId 数据表标识符 
-   * @param childrenFieldId 子对象字段 
-   * @param recordId 记录ID 
-   * @param parentRecordId 父对象记录 
-   * @param targetRecordId 目标记录ID 
-   * @param type 拖拽方式 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param childrenFieldId 子对象字段
+   * @param recordId 记录ID
+   * @param parentRecordId 父对象记录
+   * @param targetRecordId 目标记录ID
+   * @param type 拖拽方式
+   * @returns
    */
   moveTreeViewRecord(tableId: string, childrenFieldId: string, recordId: string, parentRecordId: string, targetRecordId: string, type: string): void;
   /**
    * 根据ID和条件查询单条记录
-   * @param tableId 数据表模块的标识符 
-   * @param id 需要查询的数据ID 
-   * @param setting 查询设置 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param id 需要查询的数据ID
+   * @param setting 查询设置
+   * @returns
    */
   query(tableId: string, id: string, setting: TableQuerySetting): Record<string, Object>;
   /**
    * 根据ID查询单条数据
-   * @param tableId 数据表模块的标识符 
-   * @param id 需要查询的数据ID 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param id 需要查询的数据ID
+   * @returns
    */
   queryById(tableId: string, id: string): Record<string, Object>;
   /**
    * 获取变更记录列表
-   * @param tableId 数据表标识符 
-   * @param query 查询条件 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param query 查询条件
+   * @returns
    */
   queryChangeLogList(tableId: string, query: Query): Array<TableChangeLog>;
   /**
    * 获取变更记录总数
-   * @param tableId 数据表标识符 
-   * @param informatFilter 过滤条件 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param informatFilter 过滤条件
+   * @returns
    */
   queryChangeLogListCount(tableId: string, informatFilter: Filter): number;
   /**
    * 通过条件查询指定记录的子对象记录列表
-   * @param tableId 数据表模块的标识符 
-   * @param childrenFieldId 子对象字段 
-   * @param recordId 主表的记录ID 
-   * @param query 查询条件 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param childrenFieldId 子对象字段
+   * @param recordId 主表的记录ID
+   * @param query 查询条件
+   * @returns
    */
   queryChildrenList(tableId: string, childrenFieldId: string, recordId: string, query: TableRecordQuery): Array<Record<string, Object>>;
   /**
    * 获取评论表单列表
-   * @param tableId 数据表标识符 
-   * @param query 查询条件 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param query 查询条件
+   * @returns
    */
   queryCommentList(tableId: string, query: Query): Array<TableComment>;
   /**
    * 获取评论表单列表总数
-   * @param tableId 数据表标识符 
-   * @param filter 查询条件 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param filter 查询条件
+   * @returns
    */
   queryCommentListCount(tableId: string, filter: Filter): number;
   /**
    * 通过条件查询多条数据
-   * @param tableId 数据表模块的标识符 
-   * @param query 查询条件 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param query 查询条件
+   * @returns
    */
   queryList(tableId: string, query: TableRecordQuery): Array<Record<string, Object>>;
   /**
    * 查询满足条件的数据数量
-   * @param tableId 数据表模块的标识符 
-   * @param filter 查询条件 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param filter 查询条件
+   * @returns
    */
   queryListCount(tableId: string, filter: Filter): number;
   /**
    * 查询符合条件的第一条记录
-   * @param tableKey 数据表模块的标识符 
-   * @param query 查询条件 
-   * @returns 
+   * @param tableKey 数据表模块的标识符
+   * @param query 查询条件
+   * @returns
    */
   queryOne(tableKey: string, query: TableRecordQuery): Record<string, Object>;
   /**
    * 通过主表记录ID查询关联列表字段对应子表的记录列表
-   * @param tableId 数据表模块的标识符 
-   * @param relationFieldId 关联列表字段Id 
-   * @param recordId 主表的记录ID 
-   * @param query 子表查询条件 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param relationFieldId 关联列表字段Id
+   * @param recordId 主表的记录ID
+   * @param query 子表查询条件
+   * @returns
    */
   queryRelationList(tableId: string, relationFieldId: string, recordId: string, query: TableRecordQuery): Array<Record<string, Object>>;
   /**
    * 刷新物化视图的数据
-   * @param tableId 数据表的标识符 
-   * @returns 
+   * @param tableId 数据表的标识符
+   * @returns
    */
   refreshDataSource(tableId: string): void;
   /**
    * 重新计算子对象编号
-   * @param tableId 数据表标识符 
-   * @param fieldId 子对象编号字段 
-   * @param parentRecordId 父节点记录ID 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param fieldId 子对象编号字段
+   * @param parentRecordId 父节点记录ID
+   * @returns
    */
   refreshIndexNumber(tableId: string, fieldId: string, parentRecordId: string): void;
   /**
    * 重新计算查找列表汇总字段的值
-   * @param tableId 数据表标识符 
-   * @param fieldId 查找列表汇总字段标识符 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param fieldId 查找列表汇总字段标识符
+   * @returns
    */
   refreshLookupRollup(tableId: string, fieldId: string): number;
   /**
    * 重新计算查找列表汇总字段的值
-   * @param tableId 数据表标识符 
-   * @param fieldId 查找列表汇总字段标识符 
-   * @param recordList 主表记录ID列表 
-   * @param subFilter 子表过滤条件 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param fieldId 查找列表汇总字段标识符
+   * @param recordList 主表记录ID列表
+   * @param subFilter 子表过滤条件
+   * @returns
    */
   refreshLookupRollup(tableId: string, fieldId: string, recordList: Array<string>, subFilter: Filter): number;
   /**
    * 重新计算关联列表汇总字段的值
-   * @param tableId 数据表标识符 
-   * @param fieldId 关联列表汇总字段标识符 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param fieldId 关联列表汇总字段标识符
+   * @returns
    */
   refreshRelationRollup(tableId: string, fieldId: string): number;
   /**
    * 重新计算关联列表汇总字段的值
-   * @param tableId 数据表标识符 
-   * @param fieldId 关联列表汇总字段标识符 
-   * @param recordList 主表记录ID列表 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param fieldId 关联列表汇总字段标识符
+   * @param recordList 主表记录ID列表
+   * @returns
    */
   refreshRelationRollup(tableId: string, fieldId: string, recordList: Array<string>): number;
   /**
    * 设置编号字段自增序号
-   * @param tableId 数据表标识符 
-   * @param fieldId 编号字段标识符 
-   * @param seq 自增序号 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param fieldId 编号字段标识符
+   * @param seq 自增序号
+   * @returns
    */
   setIdFieldSeq(tableId: string, fieldId: string, seq: number): number;
   /**
    * 更新记录
-   * @param tableId 数据表模块的标识符 
-   * @param rowData 需要更新的记录 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param rowData 需要更新的记录
+   * @returns
    */
   update(tableId: string, rowData: Record<string, Object>): number;
   /**
    * 更新子对象字段
-   * @param tableId 数据表模块的标识符 
-   * @param childrenFieldKey 子对象字段 
-   * @param recordId 要更新的记录ID 
-   * @param parentRecordId 要移动到的父节点 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param childrenFieldKey 子对象字段
+   * @param recordId 要更新的记录ID
+   * @param parentRecordId 要移动到的父节点
+   * @returns
    */
   updateChildrenField(tableId: string, childrenFieldKey: string, recordId: string, parentRecordId: string): void;
   /**
    * 根据配置信息更新记录
-   * @param tableId 数据表模块的标识符 
-   * @param rowData 需要更新的记录 
-   * @param config 更新配置信息 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param rowData 需要更新的记录
+   * @param config 更新配置信息
+   * @returns
    */
   updateEx(tableId: string, rowData: Record<string, Object>, config: UpdateRecordConfig): number;
   /**
    * 根据条件更新多条记录
-   * @param tableId 数据表模块的标识符 
-   * @param filter 过滤条件 
-   * @param rowData 需要更新的数据 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param filter 过滤条件
+   * @param rowData 需要更新的数据
+   * @returns
    */
   updateList(tableId: string, filter: Filter, rowData: Record<string, Object>): number;
   /**
    * 根据条件和配置更新多条记录
-   * @param tableId 数据表模块的标识符 
-   * @param filter 过滤条件 
-   * @param rowData 需要更新的数据 
-   * @param config 更新配置信息 
-   * @returns 
+   * @param tableId 数据表模块的标识符
+   * @param filter 过滤条件
+   * @param rowData 需要更新的数据
+   * @param config 更新配置信息
+   * @returns
    */
   updateListEx(tableId: string, filter: Filter, rowData: Record<string, Object>, config: UpdateRecordConfig): number;
   /**
    * 更新数据表排序序号
-   * @param tableId 数据表标识符 
-   * @param recordId 记录ID 
-   * @param seq 新的排序序号 
-   * @returns 
+   * @param tableId 数据表标识符
+   * @param recordId 记录ID
+   * @param seq 新的排序序号
+   * @returns
    */
   updateRecordSeq(tableId: string, recordId: string, seq: number): number;
   /**
    * 校验表单
-   * @param tableKey 数据表模块的标识符 
-   * @param formData 表单数据 
-   * @returns 
+   * @param tableKey 数据表模块的标识符
+   * @param formData 表单数据
+   * @returns
    */
   validateForm(tableKey: string, formData: Record<string, Object>): TableValidateFormResult;
+  /**
+   * 校验表单
+   * @param tableKey 数据表模块的标识符
+   * @param rowData 表单数据
+   * @param setting 检查配置
+   * @returns
+   */
+  validateFormBySetting(tableKey: string, rowData: Record<string, Object>, setting: ValidateFormSetting): TableValidateFormResult;
 }
 
 declare interface redis {
   /**
    * 从 Redis 中删除指定键的数据
-   * @param key 要删除值的键 
-   * @returns 
+   * @param key 要删除值的键
+   * @returns
    */
   delete(key: string): boolean;
   /**
    * 从 Redis 中删除多个键的数据
-   * @param keys 要删除值的多个键 
-   * @returns 
+   * @param keys 要删除值的多个键
+   * @returns
    */
   deleteAll(keys: Array<string>): number;
   /**
    * 获取Redis列表操作的工具类
-   * @returns 
+   * @returns
    */
   opsForList(): ListOperations;
   /**
    * 获取用于操作Redis数据库的工具类
-   * @returns 
+   * @returns
    */
   opsForValue(): ValueOperations;
 }
@@ -2501,6 +2563,10 @@ declare interface UserRole {
    * 权限列表
    */
   permissionList: Array<string>;
+  /**
+   * 备注
+   */
+  remark: string;
   setAdmin(isAdmin: boolean): void;
 }
 
@@ -2584,54 +2650,83 @@ declare interface UserInfo {
   userName: string;
 }
 
+/**
+ * 用户简要信息
+ */
+declare interface UserSimple {
+  /**
+   * 头像
+   */
+  avatar: string;
+  /**
+   * 简称
+   */
+  hint: string;
+  /**
+   * ID
+   */
+  id: string;
+  /**
+   * 名称
+   */
+  name: string;
+}
+
 declare interface aiagent {
   /**
    * 生成式聊天
-   * @param setting AI聊天配置 
-   * @returns 
+   * @param setting AI聊天配置
+   * @returns
    */
   chatCompletions(setting: OpenAIChatSetting): OpenAIChatResp;
   /**
    * 完成调用
-   * @param moduleKey 模块标识符 
-   * @param messageList 消息列表 
-   * @returns 
+   * @param moduleKey 模块标识符
+   * @param content 消息列表
+   * @returns
    */
-  completions(moduleKey: string, messageList: Array<AiAgentContentMessage>): OpenAIChatResp;
+  completions(moduleKey: string, content: Array<AiAgentContent>): OpenAIChatResp;
+  /**
+   * 完成调用
+   * @param moduleKey 模块标识符
+   * @param prompt 提示词
+   * @returns
+   */
+  completionsWithPrompt(moduleKey: string, prompt: string): OpenAIChatResp;
   /**
    * 通过ID查询会话
-   * @param id 会话ID 
-   * @returns 
+   * @param id 会话ID
+   * @returns
    */
   getThread(id: string): AiAgentThread;
   /**
    * 通过ID查询会话消息
-   * @param id 消息ID 
-   * @returns 
+   * @param id 消息ID
+   * @returns
    */
   getThreadMessage(id: number): AiAgentThreadMessage;
   /**
    * 查询会话列表
-   * @param query 查询对象 
-   * @returns 
+   * @param query 查询对象
+   * @returns
    */
   queryThreadList(query: Query): Array<AiAgentThread>;
   /**
    * 查询会话列表总数
-   * @param filter 过滤条件 
-   * @returns 
+   * @param filter 过滤条件
+   * @returns
    */
   queryThreadListCount(filter: Filter): number;
   /**
    * 查询会话列表消息
-   * @param query 查询对象 
-   * @returns 
+   * @param query 查询对象
+   * @returns
    */
   queryThreadMessageList(query: Query): Array<AiAgentThreadMessage>;
   /**
    * 查询会话列表消息总数
-   * @param filter 过滤条件 
-   * @returns 
+   * @param filter 过滤条件
+   * @returns
    */
   queryThreadMessageListCount(filter: Filter): number;
 }
@@ -2639,118 +2734,201 @@ declare interface aiagent {
 declare interface Console {
   /**
    * 打印DEBUG日志
-   * @param args 日志参数 
-   * @returns 
+   * @param args 日志参数
+   * @returns
    */
   debug(...args: any): void;
   /**
    * 将args转换为JSON并打印日志
-   * @param obj 对象 
-   * @returns 
+   * @param obj 对象
+   * @returns
    */
   dump(obj: Object): void;
   /**
    * 打印ERROR日志
-   * @param args 日志参数 
-   * @returns 
+   * @param args 日志参数
+   * @returns
    */
   error(...args: any): void;
   /**
    * 打印INFO日志
-   * @param args 日志参数 
-   * @returns 
+   * @param args 日志参数
+   * @returns
    */
   info(...args: any): void;
   /**
    * 打印日志,默认打印INFO级别日志
-   * @param args 日志参数 
-   * @returns 
+   * @param args 日志参数
+   * @returns
    */
   log(...args: any): void;
+}
+
+declare interface Wework {
+  /**
+   * 创建企业群发
+   * @param msgTemplate 群发模板
+   * @returns
+   */
+  addMsgTemplate(msgTemplate: Record<string, Object>): Record<string, Object>;
+  /**
+   * 获取企业微信access_token
+   * @returns
+   */
+  getAccessToken(): string;
+  /**
+   * 获取客户群详情
+   * @param chatId 客户群ID
+   * @param needName 是否返回群成员名字 0-否 1-是
+   * @returns
+   */
+  getGroupChat(chatId: string, needName: number): Record<string, Object>;
+  /**
+   * 获取客户群列表
+   * @param statusFilter 群状态过滤(0-所有,1-离职待继承,2-离职继承中,3-离职继承完成)
+   * @param userIdList 群主userid列表
+   * @param partyIdList 群主部门id列表
+   * @param limit 每次拉取数量
+   * @param cursor 游标
+   * @returns
+   */
+  getGroupChatList(statusFilter: number, userIdList: Array<any>, partyIdList: Array<any>, limit: number, cursor: string): Record<string, Object>;
+  /**
+   * 获取企业的全部群发记录
+   * @param chatType 聊天类型(single/group)
+   * @param startTime 开始时间(秒)
+   * @param endTime 结束时间(秒)
+   * @param creator 创建人
+   * @param filterType 过滤类型(0-所有,1-企业,2-成员)
+   * @param limit 每次拉取数量
+   * @param cursor 游标
+   * @returns
+   */
+  getGroupMsgListV2(chatType: string, startTime: number, endTime: number, creator: string, filterType: number, limit: number, cursor: string): Record<string, Object>;
+  /**
+   * 获取企业群发成员执行结果
+   * @param msgid msgid
+   * @param userid userid
+   * @param limit 每次拉取数量
+   * @param cursor 游标
+   * @returns
+   */
+  getGroupMsgResult(msgid: string, userid: string, limit: number, cursor: string): Record<string, Object>;
+  /**
+   * 获取离职成员的客户列表
+   * @param pageId 分页id
+   * @param pageSize 每页数量
+   * @param cursor 游标
+   * @returns
+   */
+  getUnassignedList(pageId: number, pageSize: number, cursor: string): Record<string, Object>;
+  /**
+   * 获取联系客户统计数据
+   * @param userIdList 成员列表
+   * @param partyIdList 部门列表
+   * @param startTime 开始时间(秒)
+   * @param endTime 结束时间(秒)
+   * @returns
+   */
+  getUserBehaviorData(userIdList: Array<any>, partyIdList: Array<any>, startTime: number, endTime: number): Record<string, Object>;
+  /**
+   * 发送新客户欢迎语
+   * @param welcomeCode 欢迎语code
+   * @param text 文本
+   * @param attachments 附件列表
+   * @returns
+   */
+  sendWelcomeMsg(welcomeCode: string, text: Record<string, Object>, attachments: Array<Record<string, Object>>): void;
 }
 
 declare interface user {
   /**
    * 添加用户到应用中
-   * @param userId 用户ID 
-   * @param roleList 应用角色列表 
-   * @returns 
+   * @param userId 用户ID
+   * @param roleList 应用角色列表
+   * @returns
    */
   addUser(userId: string, roleList: Array<string>): void;
   /**
    * 将用户从应用中移除
-   * @param userId 用户ID 
-   * @returns 
+   * @param userId 用户ID
+   * @returns
    */
   deleteUser(userId: string): number;
   /**
    * 查询应用所有权限定义
-   * @returns 
+   * @returns
    */
   getAllPermissions(): Array<string>;
   /**
    * 查询应用成员列表
-   * @returns 
+   * @returns
    */
   getAppUserList(): Array<User>;
   /**
    * 查询部门的负责人
-   * @param deptList 部门标识符列表 
-   * @returns 
+   * @param deptList 部门标识符列表
+   * @returns
    */
   getLeaderOfDeptList(deptList: Array<string>): Array<User>;
   /**
    * 查询用户的直接下属
-   * @param userId 用户ID 
-   * @returns 
+   * @param userId 用户ID
+   * @returns
    */
   getSubordinateUsers(userId: string): Array<User>;
   /**
    * 查询用户的直接上级
-   * @param userId 用户ID 
-   * @returns 
+   * @param userId 用户ID
+   * @returns
    */
   getSuperiorUsers(userId: string): Array<User>;
   /**
    * 查询用户信息
-   * @param id 用户ID 
-   * @returns 
+   * @param id 用户ID
+   * @returns
    */
   getUser(id: string): User;
   /**
    * 根据部门查询用户列表
-   * @param departmentList 部门标识符列表 
-   * @returns 
+   * @param departmentList 部门标识符列表
+   * @returns
    */
   getUserByDeptList(departmentList: Array<string>): Array<User>;
   /**
    * 根据应用角色查询用户列表
-   * @param roleList 角色标识符列表 
-   * @returns 
+   * @param roleList 角色标识符列表
+   * @returns
    */
   getUserByRoleList(roleList: Array<string>): Array<User>;
   /**
    * 根据用户ID查询用户列表
-   * @param idList 用户ID列表 
-   * @returns 
+   * @param idList 用户ID列表
+   * @returns
    */
   getUserList(idList: Array<string>): Array<User>;
   /**
    * 查询用户应用权限
-   * @param accountId 用户ID 
-   * @returns 
+   * @param accountId 用户ID
+   * @returns
    */
   getUserPermissions(accountId: string): Array<string>;
   /**
    * 查询应用角色列表
-   * @returns 
+   * @returns
    */
   getUserRoleList(): Array<UserRole>;
   /**
+   * 根据用户ID查询用户简要信息列表
+   * @param idList 用户ID列表
+   * @returns
+   */
+  getUserSimpleList(idList: Array<string>): Array<UserSimple>;
+  /**
    * 更新应用成员的角色
-   * @param userId 用户ID 
-   * @param roleList 应用角色列表 
-   * @returns 
+   * @param userId 用户ID
+   * @param roleList 应用角色列表
+   * @returns
    */
   updateUserRole(userId: string, roleList: Array<string>): number;
 }
@@ -2944,6 +3122,9 @@ declare interface JDBCResultSet {
 }
 
 declare interface JDBCConnection {
+  callProcedure(sql: string, ...args: any): void;
+  callProcedureFull(sql: string, params: Array<ProcParam>, handler: (resultSet: JDBCResultSet) => void): Record<string, Object>;
+  close(): void;
   commit(): void;
   insert(sql: string, returnAutoGeneratedKeys: boolean, ...args: any): number;
   rollback(): void;
@@ -2953,6 +3134,19 @@ declare interface JDBCConnection {
 
 declare interface ResultSetHandler {
   accept(set: JDBCResultSet): void;
+}
+
+declare interface ProcParam {
+  getName(): string;
+  getSqlType(): number;
+  getValue(): Object;
+  isOut(): boolean;
+  isOutOnly(): boolean;
+  setName(name: string): void;
+  setOut(isOut: boolean): void;
+  setOutOnly(outOnly: boolean): void;
+  setSqlType(sqlType: number): void;
+  setValue(value: Object): void;
 }
 
 /**
@@ -2984,55 +3178,55 @@ declare interface ConnnectionInfo {
 declare interface mq {
   /**
    * 收到消息以后，手动应答数据接收成功
-   * @param message 投递标识 
-   * @param multiple 批量确认标志 
-   * @returns 
+   * @param message 投递标识
+   * @param multiple 批量确认标志
+   * @returns
    */
   basicAck(message: MqMessage, multiple: boolean): void;
   /**
    * 从队列拉取消息
-   * @param moduleKey 消息队列模块标识符 
-   * @param queueKey 队列的标识符 
-   * @param autoAck 设置是否自动确认 
-   * @returns 
+   * @param moduleKey 消息队列模块标识符
+   * @param queueKey 队列的标识符
+   * @param autoAck 设置是否自动确认
+   * @returns
    */
   basicGet(moduleKey: string, queueKey: string, autoAck: boolean): MqMessage;
   /**
    * Nack方式的拒绝
-   * @param message 投递标识 
-   * @param multiple 批量确认标志 
-   * @param requeue 是否重新投递到队列中 
-   * @returns 
+   * @param message 投递标识
+   * @param multiple 批量确认标志
+   * @param requeue 是否重新投递到队列中
+   * @returns
    */
   basicNack(message: MqMessage, multiple: boolean, requeue: boolean): void;
   /**
    * 重新发送未被确认的消息
-   * @param message 消息对象 
-   * @param requeue 是否重新投递到队列中 
-   * @returns 
+   * @param message 消息对象
+   * @param requeue 是否重新投递到队列中
+   * @returns
    */
   basicRecover(message: MqMessage, requeue: boolean): void;
   /**
    * Reject拒绝消息
-   * @param message 消息对象 
-   * @param requeue 是否重新投递到队列中 
-   * @returns 
+   * @param message 消息对象
+   * @param requeue 是否重新投递到队列中
+   * @returns
    */
   basicReject(message: MqMessage, requeue: boolean): void;
   /**
    * 发送消息到队列中
-   * @param module 消息队列模块标识符 
-   * @param routingKey 路由键 
-   * @param setting 发送设置 
-   * @param message 要发送的消息 
-   * @returns 
+   * @param module 消息队列模块标识符
+   * @param routingKey 路由键
+   * @param setting 发送设置
+   * @param message 要发送的消息
+   * @returns
    */
   publish(module: string, routingKey: string, setting: MqPublishSetting, message: string): void;
   /**
    * 清空队列
-   * @param module 消息队列模块标识符 
-   * @param queue 队列的标识符 
-   * @returns 
+   * @param module 消息队列模块标识符
+   * @param queue 队列的标识符
+   * @returns
    */
   queuePurge(module: string, queue: string): number;
 }
@@ -3040,154 +3234,154 @@ declare interface mq {
 declare interface file {
   /**
    * 将文件移动到指定位置
-   * @param sourcePath 源文件路径 
-   * @param targetPath 目标文件路径 
-   * @returns 
+   * @param sourcePath 源文件路径
+   * @param targetPath 目标文件路径
+   * @returns
    */
   copy(sourcePath: string, targetPath: string): void;
   /**
    * 创建文件
-   * @param path 文件路径 
-   * @returns 
+   * @param path 文件路径
+   * @returns
    */
   create(path: string): boolean;
   /**
    * 删除文件
-   * @param path 文件路径 
-   * @returns 
+   * @param path 文件路径
+   * @returns
    */
   delete(path: string): boolean;
   /**
    * 删除目录
-   * @param path 文件夹路径 
-   * @returns 
+   * @param path 文件夹路径
+   * @returns
    */
   deleteDirectory(path: string): boolean;
   /**
    * 判断是否存在文件
-   * @param path 文件路径 
-   * @returns 
+   * @param path 文件路径
+   * @returns
    */
   exists(path: string): boolean;
   /**
    * 获取文件信息
-   * @param path 文件路径 
-   * @returns 
+   * @param path 文件路径
+   * @returns
    */
   getFile(path: string): File;
   /**
    * 获取文件完整路径
-   * @param path 文件路径 
-   * @returns 
+   * @param path 文件路径
+   * @returns
    */
   getRealPath(path: string): string;
   /**
    * 判断文件是否是文件夹
-   * @param path 文件路径 
-   * @returns 
+   * @param path 文件路径
+   * @returns
    */
   isDirectory(path: string): boolean;
   /**
    * 列出文件夹下的文件
-   * @param path 文件夹路径 
-   * @returns 
+   * @param path 文件夹路径
+   * @returns
    */
   listFile(path: string): Array<any>;
   /**
    * 获取文件MD5
-   * @param path 文件路径 
-   * @returns 
+   * @param path 文件路径
+   * @returns
    */
   md5(path: string): string;
   /**
    * 创建文件夹
-   * @param path 文件夹路径 
-   * @returns 
+   * @param path 文件夹路径
+   * @returns
    */
   mkdirs(path: string): boolean;
   /**
    * 移动文件到指定位置
-   * @param source 源文件路径 
-   * @param dest 目标文件路径 
-   * @returns 
+   * @param source 源文件路径
+   * @param dest 目标文件路径
+   * @returns
    */
   move(source: string, dest: string): boolean;
   /**
    * 将文件内容二进制内容读取为base64转换后的字节数组
-   * @param path 文件路径 
-   * @returns 
+   * @param path 文件路径
+   * @returns
    */
   readAsBase64Bytes(path: string): Array<any>;
   /**
    * 将文件内容二进制内容读取为base64转换后的字符串
-   * @param path 文件路径 
-   * @returns 
+   * @param path 文件路径
+   * @returns
    */
   readAsBase64String(path: string): string;
   /**
    * 读取文件返回二进制内容
-   * @param path 文件路径 
-   * @returns 
+   * @param path 文件路径
+   * @returns
    */
   readAsBytes(path: string): Array<any>;
   /**
    * 读取文件返回字符串内容
-   * @param path 文件路径 
-   * @param charset 字符集 
-   * @returns 
+   * @param path 文件路径
+   * @param charset 字符集
+   * @returns
    */
   readAsString(path: string, charset: string): string;
   /**
    * 解压缩文件
-   * @param sourcePath 源文件路径 
-   * @param targetPath 目标文件路径 
-   * @returns 
+   * @param sourcePath 源文件路径
+   * @param targetPath 目标文件路径
+   * @returns
    */
   unzip(sourcePath: string, targetPath: string): File;
   /**
    * 解压缩文件
-   * @param sourcePath 源文件路径 
-   * @param targetPath 目标文件路径 
-   * @param charsetName 编码 
-   * @returns 
+   * @param sourcePath 源文件路径
+   * @param targetPath 目标文件路径
+   * @param charsetName 编码
+   * @returns
    */
   unzip(sourcePath: string, targetPath: string, charsetName: string): File;
   /**
    * 将二进制内容写入文件
-   * @param path 文件路径 
-   * @param content 二进制内容 
-   * @returns 
+   * @param path 文件路径
+   * @param content 二进制内容
+   * @returns
    */
   writeBytes(path: string, content: Array<any>): void;
   /**
    * 将流写入文件
-   * @param path 文件路径 
-   * @param is 输入流 
-   * @returns 
+   * @param path 文件路径
+   * @param is 输入流
+   * @returns
    */
   writeStream(path: string, is: InputStream): void;
   /**
    * 将字符串写入文件
-   * @param path 文件路径 
-   * @param content 字符串内容 
-   * @param charset 字符集 
-   * @returns 
+   * @param path 文件路径
+   * @param content 字符串内容
+   * @param charset 字符集
+   * @returns
    */
   writeString(path: string, content: string, charset: string): void;
   /**
    * 压缩文件
-   * @param sourcePath 源文件路径 
-   * @param targetPath 目标文件路径 
-   * @returns 
+   * @param sourcePath 源文件路径
+   * @param targetPath 目标文件路径
+   * @returns
    */
   zip(sourcePath: string, targetPath: string): File;
   /**
    * 压缩文件
-   * @param sourcePath 源文件路径 
-   * @param targetPath 目标文件路径 
-   * @param charsetName 编码 
-   * @param withSrcDir 是否包含被打包目录 
-   * @returns 
+   * @param sourcePath 源文件路径
+   * @param targetPath 目标文件路径
+   * @param charsetName 编码
+   * @param withSrcDir 是否包含被打包目录
+   * @returns
    */
   zip(sourcePath: string, targetPath: string, charsetName: string, withSrcDir: boolean): File;
 }
@@ -3195,21 +3389,21 @@ declare interface file {
 declare interface email {
   /**
    * 收邮件
-   * @param server 邮箱服务器 
-   * @returns 
+   * @param server 邮箱服务器
+   * @returns
    */
   getStore(server: EmailServer): EmailStore;
   /**
    * 发送邮件
-   * @param server 邮箱服务器 
-   * @param message 邮件信息 
-   * @returns 
+   * @param server 邮箱服务器
+   * @param message 邮件信息
+   * @returns
    */
   send(server: EmailServer, message: EmailMessage): void;
   /**
    * 使用系统邮箱发送邮件
-   * @param vmessage 邮件信息 
-   * @returns 
+   * @param vmessage 邮件信息
+   * @returns
    */
   sendWithSystemServer(vmessage: EmailMessage): void;
 }
@@ -3487,6 +3681,34 @@ declare interface LoginResult {
 }
 
 /**
+ * 严格授权申请记录
+ */
+declare interface CompanySecurityApply {
+  applyAccountAvatar: string;
+  applyAccountId: string;
+  applyAccountName: string;
+  applyAccountUserName: string;
+  applyTime: Date;
+  approveAccountAvatar: string;
+  approveAccountId: string;
+  approveAccountName: string;
+  approveIp: string;
+  approveReason: string;
+  approveTime: Date;
+  companyId: string;
+  content: Array<ApplyContentForm>;
+  id: string;
+  ip: string;
+  /**
+   * 状态
+   */
+  status: string;
+  title: string;
+  updateAccountId: string;
+  updateTime: Date;
+}
+
+/**
  * 运行结果
  */
 declare interface ProcessRunResult {
@@ -3507,8 +3729,8 @@ declare interface ProcessRunResult {
 declare interface http {
   /**
    * 发送网络请求
-   * @param request 请求对象 
-   * @returns 
+   * @param request 请求对象
+   * @returns
    */
   request(request: HttpRequest): HttpResponse;
 }
@@ -3516,244 +3738,292 @@ declare interface http {
 declare interface system {
   /**
    * 新增账号
-   * @param account 账号信息,ID如果没有填写就会使用系统随机生成的ID 
-   * @returns 
+   * @param account 账号信息,ID如果没有填写就会使用系统随机生成的ID
+   * @returns
    */
   addAccount(account: AccountAddForm): string;
   /**
    * 新增团队成员
-   * @param companyId 团队ID 
-   * @param accountId 账号ID 
-   * @param departmentList 部门ID列表 
-   * @param roleList 角色ID列表 
-   * @returns 
+   * @param companyId 团队ID
+   * @param accountId 账号ID
+   * @param departmentList 部门ID列表
+   * @param roleList 角色ID列表
+   * @returns
    */
   addCompanyMember(companyId: string, accountId: string, departmentList: Array<string>, roleList: Array<string>): void;
   /**
+   * 新增团队成员
+   * @param companyId 团队ID
+   * @param accountId 账号ID
+   * @param departmentOidList 部门ID列表
+   * @param roleKeyList 角色ID列表
+   * @param isSwitch 是否切换团队
+   * @returns
+   */
+  addCompanyMember(companyId: string, accountId: string, departmentOidList: Array<string>, roleKeyList: Array<string>, isSwitch: boolean): void;
+  /**
    * 新增系统日志
-   * @param optLog 系统日志对象 
-   * @returns 
+   * @param optLog 系统日志对象
+   * @returns
    */
   addOptLog(optLog: OptLog): void;
   /**
    * 修改账号密码
-   * @param accountId 账号ID 
-   * @param pwd 新密码 
-   * @returns 
+   * @param accountId 账号ID
+   * @param pwd 新密码
+   * @returns
    */
   changePassword(accountId: string, pwd: string): number;
   /**
    * 创建团队
-   * @param license 团队License 
-   * @returns 
+   * @param license 团队License
+   * @returns
    */
   createCompany(license: string): string;
   /**
+   * 创建团队
+   * @param license 团队License
+   * @param isSwitch 是否切换团队
+   * @returns
+   */
+  createCompany(license: string, isSwitch: boolean): string;
+  /**
    * 为账号创建登录授权TOKEN
-   * @param accountId 账号ID 
-   * @param type Token类型 PC端:index;移动端:mobile 
-   * @returns 
+   * @param accountId 账号ID
+   * @param type Token类型 PC端:index;移动端:mobile
+   * @returns
    */
   createToken(accountId: string, type: string): string;
   /**
    * 删除系统日志
-   * @param vfilter 查询条件 
-   * @returns 
+   * @param vfilter 查询条件
+   * @returns
    */
   deleteOptLogList(vfilter: Filter): number;
   /**
    * 异步执行任务
-   * @param func 执行函数 
-   * @param arg 参数 
-   * @param successCallback 成功回调 
-   * @param failedCallback 失败回调 
-   * @returns 
+   * @param func 执行函数
+   * @param arg 参数
+   * @param successCallback 成功回调
+   * @param failedCallback 失败回调
+   * @returns
    */
   executeAsync(func: Array<Object>, arg: Object, successCallback: Array<Object>, failedCallback: Array<Object>): Array<?>;
   /**
    * 查询账号信息
-   * @param id 账号ID 
-   * @returns 
+   * @param id 账号ID
+   * @returns
    */
   getAccount(id: string): Account;
   /**
    * 通过邮箱查询账号
-   * @param email 邮箱 
-   * @returns 
+   * @param email 邮箱
+   * @returns
    */
   getAccountByEmail(email: string): Account;
   /**
    * 通过手机号查询账号
-   * @param mobileNo 手机号 
-   * @returns 
+   * @param mobileNo 手机号
+   * @returns
    */
   getAccountByMobileNo(mobileNo: string): Account;
   /**
    * 通过TOKEN查找账号信息
-   * @param token 一个令牌（token） 
-   * @returns 
+   * @param token 一个令牌（token）
+   * @returns
    */
   getAccountByToken(token: string): Account;
   /**
    * 通过用户名查询账号
-   * @param userName 用户名 
-   * @returns 
+   * @param userName 用户名
+   * @returns
    */
   getAccountByUserName(userName: string): Account;
   /**
    * 查询角色列表
-   * @param companyId 团队ID 
-   * @returns 
+   * @param companyId 团队ID
+   * @returns
    */
   getCompanyAllRoles(companyId: string): Array<CompanyRole>;
   /**
+   * 获取国际化消息内容
+   * @param msgKey 消息Key
+   * @param args 占位参数列表
+   * @returns
+   */
+  getI18nMessage(msgKey: string, ...args: any): string;
+  /**
    * 查询账号凭证
-   * @param accountId 账号ID 
-   * @param type Token类型 PC端:index;移动端:mobile 
-   * @returns 
+   * @param accountId 账号ID
+   * @param type Token类型 PC端:index;移动端:mobile
+   * @returns
    */
   getTokenByAccount(accountId: string, type: string): AccountToken;
   /**
    * 返回host 如https://next.informat.cn/
-   * @returns 
+   * @returns
    */
   host(): string;
   /**
+   * 返回内网host地址 如http://192.168.1.100:8881/
+   * @returns
+   */
+  intranetHost(): string;
+  /**
    * 调用扩展库中的函数
-   * @param libraryId 扩展库标识符 
-   * @param className 需要调用的扩展库中的类 
-   * @param methodName 需要调用的扩展库中的方法，此方法必须为静态类型 
-   * @param args 传递给方法的参数 
-   * @returns 
+   * @param libraryId 扩展库标识符
+   * @param className 需要调用的扩展库中的类
+   * @param methodName 需要调用的扩展库中的方法，此方法必须为静态类型
+   * @param args 传递给方法的参数
+   * @returns
    */
   invokeLibrary(libraryId: string, className: string, methodName: string, args: Array<Object>): Object;
   /**
    * 登录
-   * @param req 登录信息 
-   * @returns 
+   * @param req 登录信息
+   * @returns
    */
   login(req: LoginForm): LoginResult;
   /**
    * 查询账号列表
-   * @param query 账号查询条件 
-   * @returns 
+   * @param query 账号查询条件
+   * @returns
    */
   queryAccountList(query: Query): Array<Account>;
   /**
    * 查询账号列表总数
-   * @param filter 查询条件 
-   * @returns 
+   * @param filter 查询条件
+   * @returns
    */
   queryAccountListCount(filter: Filter): number;
   /**
    * 查询部门列表
-   * @param companyId 团队ID 
-   * @param query 查询条件 
-   * @returns 
+   * @param companyId 团队ID
+   * @param query 查询条件
+   * @returns
    */
   queryCompanyDeptList(companyId: string, query: Query): Array<Department>;
   /**
    * 查询团队列表
-   * @param query 查询条件 
-   * @returns 
+   * @param query 查询条件
+   * @returns
    */
   queryCompanyList(query: Query): Array<Company>;
   /**
    * 查询团队列表总数
-   * @param filter 查询条件 
-   * @returns 
+   * @param filter 查询条件
+   * @returns
    */
   queryCompanyListCount(filter: Filter): number;
   /**
+   * 查询严格授权申请记录列表
+   * @param query 查询条件
+   * @returns
+   */
+  queryCompanySecurityApplyList(query: Query): Array<CompanySecurityApply>;
+  /**
+   * 查询严格授权申请记录列表总数
+   * @param filter 查询条件
+   * @returns
+   */
+  queryCompanySecurityApplyListCount(filter: Filter): number;
+  /**
    * 查询系统日志列表
-   * @param query 查询条件 
-   * @returns 
+   * @param query 查询条件
+   * @returns
    */
   queryOptLogList(query: Query): Array<OptLog>;
   /**
    * 查询系统日志列表总数
-   * @param filter 查询条件 
-   * @returns 
+   * @param filter 查询条件
+   * @returns
    */
   queryOptLogListCount(filter: Filter): number;
   /**
    * 运行js命令
-   * @param args 执行参数 
-   * @returns 
+   * @param args 执行参数
+   * @returns
    */
   runNodeJS(args: RunNodeJSArgs): ProcessRunResult;
   /**
    * 启动一个新的进程
-   * @param args 执行参数 
-   * @returns 
+   * @param args 执行参数
+   * @returns
    */
   runProcess(args: ProcessRunArgs): ProcessRunResult;
   /**
    * 运行上下文
-   * @param context 运行上下文 
-   * @param callback 回调函数 
-   * @returns 
+   * @param context 运行上下文
+   * @param callback 回调函数
+   * @returns
    */
   runWithContext(context: RunWithContext, callback: Array<Object>): Object;
   /**
    * 查询服务器节点ID
-   * @returns 
+   * @returns
    */
   serverId(): string;
   /**
    * 启用/禁用账号
-   * @param accountId 账号ID 
-   * @param isValid 启用或禁用,true表示启用 
-   * @returns 
+   * @param accountId 账号ID
+   * @param isValid 启用或禁用,true表示启用
+   * @returns
    */
   setAccountValid(accountId: string, isValid: boolean): void;
   /**
+   * 启用/禁用团队
+   * @param companyId 团队ID
+   * @param isValid 团队状态
+   * @returns
+   */
+  setCompanyValid(companyId: string, isValid: boolean): void;
+  /**
    * 设置密码规则
-   * @param reg 正则表达式 
-   * @returns 
+   * @param reg 正则表达式
+   * @returns
    */
   setPasswordRule(reg: string): void;
   /**
    * 更新账号
-   * @param account 账号信息 
-   * @param updateFields 更新的字段列表 
-   * @returns 
+   * @param account 账号信息
+   * @param updateFields 更新的字段列表
+   * @returns
    */
   updateAccount(account: Account, updateFields: Array<string>): number;
   /**
    * 更新账号列表
-   * @param account 账号信息 
-   * @param updateFields 更新字段列表 
-   * @param filter 过滤条件 
-   * @returns 
+   * @param account 账号信息
+   * @param updateFields 更新字段列表
+   * @param filter 过滤条件
+   * @returns
    */
   updateAccountList(account: Account, updateFields: Array<string>, filter: Filter): number;
   /**
    * 更新团队License
-   * @param companyId 团队ID 
-   * @param license 团队License 
-   * @returns 
+   * @param companyId 团队ID
+   * @param license 团队License
+   * @returns
    */
   updateCompanyLicense(companyId: string, license: string): string;
   /**
    * 设置账号凭证过期时间
-   * @param token 凭证 
-   * @param expireTime 过期时间 
-   * @returns 
+   * @param token 凭证
+   * @param expireTime 过期时间
+   * @returns
    */
   updateTokenExpireTime(token: string, expireTime: Date): void;
   /**
    * 上传文件到自定义路径
-   * @param localPath 本地文件路径 
-   * @param path 自定义路径 
-   * @returns 
+   * @param localPath 本地文件路径
+   * @param path 自定义路径
+   * @returns
    */
   uploadFile(localPath: string, path: string): void;
   /**
    * 校验用户名密码
-   * @param user 用户名或者手机号 
-   * @param pwd 密码 
-   * @returns 
+   * @param user 用户名或者手机号
+   * @param pwd 密码
+   * @returns
    */
   validateAccount(user: string, pwd: string): boolean;
 }
@@ -3838,6 +4108,16 @@ declare interface TableChangeLog {
 }
 
 /**
+ * 记录更新配置
+ */
+declare interface ValidateFormSetting {
+  nullable: boolean;
+  optionValue: boolean;
+  range: boolean;
+  validateRule: boolean;
+}
+
+/**
  * 数据表
  */
 declare interface Table {
@@ -3877,6 +4157,10 @@ declare interface TableQuerySetting {
  * 数据表字段
  */
 declare interface TableField {
+  /**
+   * 分组
+   */
+  group: string;
   /**
    * ID
    */
@@ -3964,6 +4248,10 @@ declare interface TableRecordQuery {
    * 聚合查询
    */
   aggregationQueryList: Array<AggregationQuery>;
+  /**
+   * 排除的字段列表
+   */
+  excludeFields: Array<string>;
   /**
    * 过滤条件
    */
@@ -4085,6 +4373,10 @@ declare interface TableInfo {
   /**
    * 数据表字段列表
    */
+  tableFieldGroupList: Array<TableFieldGroup>;
+  /**
+   * 数据表字段列表
+   */
   tableFieldList: Array<TableField>;
 }
 
@@ -4156,6 +4448,10 @@ declare interface UpdateRecordConfig {
    * 是否启用变更记录,默认false
    */
   enableChangeLog: boolean;
+  /**
+   * 是否同步更新工作流实例form变量,默认false
+   */
+  updateBpmnInstaceFormVar: boolean;
 }
 
 /**
@@ -4208,6 +4504,36 @@ declare interface DeleteRecordConfig {
    * 是否不计算查找汇总字段,默认false表示计算汇总字段
    */
   disableCalculateRollupField: boolean;
+}
+
+/**
+ * 数据表字段分组
+ */
+declare interface TableFieldGroup {
+  /**
+   * 颜色
+   */
+  color: string;
+  /**
+   * 在创建表单中分步骤展示
+   */
+  createAsStep: boolean;
+  /**
+   * ID
+   */
+  id: string;
+  /**
+   * 标识符
+   */
+  key: string;
+  /**
+   * 分组名称
+   */
+  name: string;
+  /**
+   * 使用标签的形式展示分组
+   */
+  showInTab: boolean;
 }
 
 /**
@@ -4493,6 +4819,10 @@ declare interface HttpRequest {
    */
   body: string;
   /**
+   * byte数组请求体
+   */
+  bodyBytes: Array<any>;
+  /**
    * 字符集
    */
   charset: string;
@@ -4581,39 +4911,54 @@ declare interface CsvReaderHandler {
   accept(row: CsvRow): void;
 }
 
+declare interface Pdf {
+  /**
+   * 读取Pdf文件的文本内容
+   * @param pdfFilePath pdf文件在本地沙盒中的路径
+   * @returns
+   */
+  getText(pdfFilePath: string): string;
+  /**
+   * pdf文件转换为图片列表
+   * @param pdfFilePath pdf文件在本地沙盒中的路径
+   * @returns
+   */
+  toImages(pdfFilePath: string): Array<string>;
+}
+
 declare interface transaction {
   /**
    * 提交事务
-   * @param status 当前事务状态 
-   * @returns 
+   * @param status 当前事务状态
+   * @returns
    */
   commit(status: TransactionStatus): void;
   /**
    * 获取当前事务状态
-   * @returns 
+   * @returns
    */
   currentTransactionStatus(): TransactionStatus;
   /**
    * 创建默认事务定义
-   * @returns 
+   * @returns
    */
   defaultTransactionDefinition(): DefaultTransactionDefinition;
   /**
    * 根据给定的事务定义（TransactionDefinition）获取一个事务，并返回其运行时状态
-   * @param definition 事务定义 
-   * @returns 
+   * @param definition 事务定义
+   * @returns
    */
   getTransactionStatus(definition: DefaultTransactionDefinition): TransactionStatus;
   /**
    * 注册事务同步回调
-   * @param ts 事务同步回调对象 
-   * @returns 
+   * @param ts 事务同步回调对象
+   * @returns
    */
   registerSynchronization(ts: TransactionSynchronization): void;
   /**
    * 回滚事务
-   * @param status 事务状态 
-   * @returns 
+   * @param status 事务状态
+   * @returns
    */
   rollback(status: TransactionStatus): void;
 }
@@ -4791,6 +5136,14 @@ declare interface BpmnTaskCc {
  */
 declare interface BpmnInstanceQuery {
   /**
+   * businessKey
+   */
+  businessKey: string;
+  /**
+   * businessKeyList
+   */
+  businessKeyList: Array<string>;
+  /**
    * 终止结束时间
    */
   endTimeEnd: Date;
@@ -4798,6 +5151,10 @@ declare interface BpmnInstanceQuery {
    * 起始结束时间
    */
   endTimeStart: Date;
+  /**
+   * ID列表
+   */
+  idList: Array<string>;
   /**
    * 实例名称
    */
@@ -4815,9 +5172,13 @@ declare interface BpmnInstanceQuery {
    */
   startTimeStart: Date;
   /**
-   * 实例状态，进行中 doing，已完成 done
+   * 发起人ID
    */
   startUserId: string;
+  /**
+   * 发起人ID列表
+   */
+  startUserIdInList: Array<string>;
   /**
    * 实例状态，进行中 doing，已完成 done
    */
@@ -4830,6 +5191,52 @@ declare interface BpmnInstanceQuery {
   getPageSize(): number;
   setPageIndex(pageIndex: number): void;
   setPageSize(pageSize: number): void;
+}
+
+/**
+ * 工作流定义版本
+ */
+declare interface BpmnProcessVersion {
+  /**
+   * 生效时间
+   */
+  activeTime: Date;
+  /**
+   * 创建人图标
+   */
+  createAccountAvatar: string;
+  /**
+   * 创建人ID
+   */
+  createAccountId: string;
+  /**
+   * 创建人名称
+   */
+  createAccountName: string;
+  /**
+   * 创建时间
+   */
+  createTime: Date;
+  /**
+   * 版本ID
+   */
+  id: string;
+  /**
+   * 名称
+   */
+  name: string;
+  /**
+   * 生效开始时间
+   */
+  startTime: Date;
+  /**
+   * 状态
+   */
+  status: string;
+  /**
+   * 最后修改时间
+   */
+  updateTime: Date;
 }
 
 /**
@@ -4910,6 +5317,36 @@ declare interface BpmnTableFieldSetting {
 }
 
 /**
+ * 工作流流转线
+ */
+declare interface BpmnFlow {
+  /**
+   * 条件表达式
+   */
+  conditionExpression: string;
+  /**
+   * ID
+   */
+  id: string;
+  /**
+   * 名称
+   */
+  name: string;
+  /**
+   * 备注
+   */
+  remark: string;
+  /**
+   * 源节点
+   */
+  sourceRef: string;
+  /**
+   * 目标节点
+   */
+  targetRef: string;
+}
+
+/**
  * 工作流流程图
  */
 declare interface BpmnProcessDiagramConfig {
@@ -4922,7 +5359,7 @@ declare interface BpmnProcessDiagramConfig {
    */
   annotationFontName: string;
   /**
-   * 
+   *
    */
   drawSequenceFlowNameWithNoLabelDI: boolean;
   /**
@@ -4945,6 +5382,32 @@ declare interface BpmnProcessDiagramConfig {
    * 比例
    */
   scaleFactor: number;
+}
+
+/**
+ * 工作流XML解析对象
+ */
+declare interface BpmnProcessXml {
+  /**
+   * 流程流转线列表
+   */
+  flowList: Array<BpmnFlow>;
+  /**
+   * ID
+   */
+  id: string;
+  /**
+   * 流程名称
+   */
+  name: string;
+  /**
+   * 流程节点列表
+   */
+  nodeList: Array<BpmnNode>;
+  /**
+   * 流程启动配置
+   */
+  startSetting: BpmnStartSetting;
 }
 
 /**
@@ -5027,6 +5490,14 @@ declare interface BpmnTaskQuery {
    */
   assignee: string;
   /**
+   * businessKey
+   */
+  businessKey: string;
+  /**
+   * businessKeyList
+   */
+  businessKeyList: Array<string>;
+  /**
    * 终止创建时间
    */
   createTimeEnd: Date;
@@ -5034,6 +5505,14 @@ declare interface BpmnTaskQuery {
    * 起始创建时间
    */
   createTimeStart: Date;
+  /**
+   * dueDateEnd
+   */
+  dueDateEnd: Date;
+  /**
+   * dueDateStart
+   */
+  dueDateStart: Date;
   /**
    * 任务执行ID
    */
@@ -5046,6 +5525,10 @@ declare interface BpmnTaskQuery {
    * 状态,进行中 doing，已完成 done
    */
   status: string;
+  /**
+   * taskDefKey
+   */
+  taskDefKey: string;
   /**
    * 任务名称
    */
@@ -5068,6 +5551,10 @@ declare interface BpmnProcess {
    * 创建时间
    */
   createTime: Date;
+  /**
+   * 流程定义ID
+   */
+  defineId: string;
   /**
    * 图标
    */
@@ -5127,9 +5614,43 @@ declare interface BpmnComment {
    */
   type: string;
   /**
+   * 用户头像
+   */
+  userAvatar: string;
+  /**
    * 用户ID
    */
   userId: string;
+  /**
+   * 用户名称
+   */
+  userName: string;
+}
+
+/**
+ * 工作流节点
+ */
+declare interface BpmnNode {
+  /**
+   * ID
+   */
+  id: string;
+  /**
+   * 节点名称
+   */
+  name: string;
+  /**
+   * 节点备注
+   */
+  remark: string;
+  /**
+   * 节点任务配置
+   */
+  taskSetting: BpmnTaskSetting;
+  /**
+   * 节点类型
+   */
+  type: string;
 }
 
 /**
@@ -5273,6 +5794,15 @@ declare interface CompleteSetVar {
 declare interface bpmn {
   addBpmnTaskCcList(taskId: string, copyUserList: Array<string>): void;
   addComment(moduleKey: string, taskId: string, msg: string): string;
+  /**
+   * 指定用户添加工作流评论
+   * @param moduleKey 模块ID
+   * @param taskId 任务ID
+   * @param msg 评论内容
+   * @param userId 用户ID
+   * @returns
+   */
+  addCommentWithUser(moduleKey: string, taskId: string, msg: string, userId: string): string;
   addMultiInstanceExecution(moduleKey: string, activityId: string, parentExecutionId: string, executionVariables: Record<string, Object>): string;
   addTaskCandidateRole(moduleKey: string, taskId: string, roleKey: string): void;
   addTaskCandidateUser(moduleKey: string, taskId: string, userId: string): void;
@@ -5288,13 +5818,21 @@ declare interface bpmn {
   deleteTaskCandidateUser(moduleKey: string, taskId: string, userId: string): void;
   deleteTasks(moduleKey: string, taskIds: Array<string>, deleteReason: string, cascade: boolean): void;
   generateProcessDiagram(moduleKey: string, procDefId: string, config: BpmnProcessDiagramConfig): string;
+  getActiveProcessDefineObject(moduleKey: string, defineKey: string): BpmnProcessXml;
   /**
    * 查询工作流定义列表
-   * @param moduleKey 模块标识符 
-   * @param query 查询对象 
-   * @returns 
+   * @param moduleKey 模块标识符
+   * @param query 查询对象
+   * @returns
    */
   getBpmnProcessDefineList(moduleKey: string, query: BpmnProcessQuery): Array<BpmnProcess>;
+  /**
+   * 查询流程定义版本列表
+   * @param moduleKey 模块标识符
+   * @param processDefineKey 流程定义标识符
+   * @returns
+   */
+  getBpmnProcessVersionList(moduleKey: string, processDefineKey: string): Array<BpmnProcessVersion>;
   getHistoryTaskVariable(taskId: string, variableName: string): Object;
   getHistoryTaskVariables(taskId: string): Record<string, Object>;
   getIdentityLinksForTask(moduleKey: string, taskId: string): Array<BpmnIdentityLink>;
@@ -5302,6 +5840,7 @@ declare interface bpmn {
   getInstanceVar(moduleKey: string, instanceId: string, varName: string): Object;
   getInstanceVars(moduleKey: string, instanceId: string): Record<string, Object>;
   getProcessDefineXml(moduleKey: string, procDefId: string): string;
+  getProcessDefineXmlObject(moduleKey: string, procDefId: string): BpmnProcessXml;
   getStartSetting(moduleKey: string, defineId: string): BpmnStartSetting;
   getTaskLocalVar(moduleKey: string, taskId: string, varName: string): Object;
   getTaskSetting(procDefineId: string, taskDefKey: string): BpmnTaskSetting;
@@ -5324,13 +5863,21 @@ declare interface bpmn {
   setInstanceLocalVar(moduleKey: string, instanceId: string, varName: string, varValue: Object): void;
   /**
    * 设置流程实例变量
-   * @param moduleKey 模块标识符 
-   * @param instanceId 流程实例标识符 
-   * @param varName 变量名 
-   * @param varValue 变量值 
-   * @returns 
+   * @param moduleKey 模块标识符
+   * @param instanceId 流程实例标识符
+   * @param varName 变量名
+   * @param varValue 变量值
+   * @returns
    */
   setInstanceVar(moduleKey: string, instanceId: string, varName: string, varValue: Object): void;
+  /**
+   * 设置流程定义的当前版本
+   * @param moduleKey 模块标识符
+   * @param processDefineKey 流程定义标识符
+   * @param versionId 版本ID
+   * @returns
+   */
+  setProcessCurrentVersion(moduleKey: string, processDefineKey: string, versionId: string): void;
   setProcessInstanceName(moduleKey: string, instanceId: string, name: string): void;
   setTaskAssignee(moduleKey: string, taskId: string, userId: string): void;
   setTaskLocalVar(moduleKey: string, taskId: string, varName: string, varValue: Object): void;
@@ -5344,10 +5891,10 @@ declare interface bpmn {
 declare interface datasource {
   /**
    * 获取数据库连接
-   * @param moduleKey 模块标识符 
-   * @param dataSourceKey 数据源Key 
-   * @param info 数据源连接信息 
-   * @returns 
+   * @param moduleKey 模块标识符
+   * @param dataSourceKey 数据源Key
+   * @param info 数据源连接信息
+   * @returns
    */
   getConnection(moduleKey: string, dataSourceKey: string, info: DataSourceConnnectionSetting): JDBCConnection;
 }
@@ -5355,20 +5902,20 @@ declare interface datasource {
 declare interface xml {
   /**
    * 创建一个新的Document对象
-   * @returns 
+   * @returns
    */
   createDocument(): Document;
   /**
    * 将Document对象转换为xml字符串
-   * @param doc xml文档对象 
-   * @param config 输出配置 
-   * @returns 
+   * @param doc xml文档对象
+   * @param config 输出配置
+   * @returns
    */
   doc2xml(doc: Document, config: Doc2XmlConfig): string;
   /**
    * 读取XML内容并返回Document对象
-   * @param xml xml内容 
-   * @returns 
+   * @param xml xml内容
+   * @returns
    */
   parse(xml: string): Document;
 }
@@ -5380,6 +5927,14 @@ declare interface PictureRenderData {
  * Word图片
  */
 declare interface WordPicture {
+  /**
+   * 图片对齐模式.居左:left,居中:center,居右right
+   */
+  align: string;
+  /**
+   * 自适应图片缩放.true时图片按照原始比例缩放,false则保持和指定宽高一致
+   */
+  fitSize: boolean;
   /**
    * 高度
    */
@@ -5505,6 +6060,31 @@ declare interface ScriptDefine {
    * 内容
    */
   content: string;
+}
+
+/**
+ * 引用对象
+ */
+declare interface RefEntityRelation {
+  parent: string;
+  relation: string;
+  to: string;
+  type: string;
+}
+
+/**
+ * 引用关系
+ */
+declare interface RefEntity {
+  children: Array<RefEntity>;
+  className: string;
+  id: string;
+  isEntity: boolean;
+  key: string;
+  name: string;
+  relations: Array<RefEntityRelation>;
+  scope: string;
+  type: string;
 }
 
 /**
@@ -6165,62 +6745,62 @@ declare interface MppResource {
 declare interface notification {
   /**
    * 删除通知
-   * @param id 通知ID 
-   * @returns 
+   * @param id 通知ID
+   * @returns
    */
   deleteNotification(id: string): number;
   /**
    * 获取当前应用下是否启用通知的线程局部变量
-   * @returns 
+   * @returns
    */
   isThreadLocalEnableNotify(): boolean;
   /**
    * 获取通知列表
-   * @param query 查询条件 
-   * @returns 
+   * @param query 查询条件
+   * @returns
    */
   queryCustomNotificationList(query: Query): Array<Notification>;
   /**
    * 获取通知总数
-   * @param filter 过滤条件 
-   * @returns 
+   * @param filter 过滤条件
+   * @returns
    */
   queryCustomNotificationListCount(filter: Filter): number;
   /**
    * 获取通知列表
-   * @param query 查询条件 
-   * @returns 
+   * @param query 查询条件
+   * @returns
    */
   queryNotificationList(query: Query): Array<Notification>;
   /**
    * 获取通知总数
-   * @param filter 过滤条件 
-   * @returns 
+   * @param filter 过滤条件
+   * @returns
    */
   queryNotificationListCount(filter: Filter): number;
   /**
    * 发送消息通知
-   * @param notification 系统通知 
-   * @returns 
+   * @param notification 系统通知
+   * @returns
    */
   sendNotification(notification: NotificationForm): string;
   /**
    * 设置自定义消息已发送
-   * @param notificationId 系统通知ID 
-   * @returns 
+   * @param notificationId 系统通知ID
+   * @returns
    */
   setCustomNotificationSent(notificationId: string): void;
   /**
    * 设置当前应用下是否启用通知的线程局部变量
-   * @param enable 是否启用 
-   * @returns 
+   * @param enable 是否启用
+   * @returns
    */
   setThreadLocalEnableNotify(enable: boolean): void;
   /**
    * 更新通知
-   * @param form 通知对象 
-   * @param updateFieldList 更新字段列表 
-   * @returns 
+   * @param form 通知对象
+   * @param updateFieldList 更新字段列表
+   * @returns
    */
   updateNotification(form: Notification, updateFieldList: Array<string>): number;
 }
@@ -6392,6 +6972,10 @@ declare interface OpenAIChatSetting {
    */
   apiKey: string;
   /**
+   * 额外信息
+   */
+  extra_body: Object;
+  /**
    * 频率惩罚，防止重复内容 默认是0
    */
   frequencyPenalty: number;
@@ -6504,24 +7088,6 @@ declare interface OpenAIChatAudioOptions {
    * 语音类型（如alloy, ash, ballad, coral, echo, fable, nova, onyx, sage, shimmer）
    */
   voice: string;
-}
-
-/**
- * AI消息
- */
-declare interface AiAgentContentMessage {
-  /**
-   * 图片链接
-   */
-  imageUrl: string;
-  /**
-   * 文本
-   */
-  text: string;
-  /**
-   * 类型
-   */
-  type: string;
 }
 
 /**
@@ -6850,6 +7416,10 @@ declare interface OpenAIChatMessage {
    */
   name: string;
   /**
+   * 思考过程内容
+   */
+  reasoning_content: Object;
+  /**
    * 角色（如 "system"、"user"、"assistant"）
    */
   role: string;
@@ -7023,7 +7593,7 @@ declare interface OpenAIChatReqToolFunction {
   name: string;
   /**
    * 参数JSON Schema定义
-示例：{"type":"object", "required":["amount"], 
+示例：{"type":"object", "required":["amount"],
 "properties":{"amount":{"type":"number", "description":"贷款总额"}}}
    */
   parameters: Object;
@@ -7046,6 +7616,24 @@ declare interface OpenAIChatToolChoiceFunction {
 示例：get_current_weather
    */
   name: string;
+}
+
+/**
+ * AI消息
+ */
+declare interface AiAgentContent {
+  /**
+   * 图片链接
+   */
+  imageUrl: string;
+  /**
+   * 文本
+   */
+  text: string;
+  /**
+   * 类型
+   */
+  type: string;
 }
 
 /**
@@ -7308,112 +7896,112 @@ declare interface OpenAIChatApproximate {
 declare interface company {
   /**
    * 新增应用分组
-   * @param bean 应用分组 
-   * @returns 
+   * @param bean 应用分组
+   * @returns
    */
   addAppGroup(bean: AppGroup): string;
   /**
    * 将账号添加到团队成员列表中
-   * @param accountId 账号ID 
-   * @param departmentOidList 部门OID列表 
-   * @param roleKeyList 角色Key列表 
-   * @returns 
+   * @param accountId 账号ID
+   * @param departmentOidList 部门OID列表
+   * @param roleKeyList 角色Key列表
+   * @returns
    */
   addCompanyMember(accountId: string, departmentOidList: Array<string>, roleKeyList: Array<string>): void;
   /**
    * 删除应用分组
-   * @param groupId 应用分组ID 
-   * @returns 
+   * @param groupId 应用分组ID
+   * @returns
    */
   deleteAppGroup(groupId: string): number;
   /**
    * 将账号从团队成员中移除
-   * @param accountId 账号ID 
-   * @returns 
+   * @param accountId 账号ID
+   * @returns
    */
   deleteCompanyMember(accountId: string): number;
   /**
    * 查询当前团队信息
-   * @returns 
+   * @returns
    */
   getCompany(): Company;
   /**
    * 查询用户能访问的应用列表
-   * @param accountId 账号ID 
-   * @returns 
+   * @param accountId 账号ID
+   * @returns
    */
   getUserAppList(accountId: string): UserAppList;
   /**
    * 安装应用
-   * @param req 安装应用请求 
-   * @returns 
+   * @param req 安装应用请求
+   * @returns
    */
   installApp(req: InstallAppRequest): string;
   /**
    * 通过ID查询应用分组
-   * @param id 应用分组ID 
-   * @returns 
+   * @param id 应用分组ID
+   * @returns
    */
   queryAppGroupById(id: string): AppGroup;
   /**
    * 查询应用分组列表
-   * @param query 查询对象 
-   * @returns 
+   * @param query 查询对象
+   * @returns
    */
   queryAppGroupList(query: Query): Array<AppGroup>;
   /**
    * 查询应用分组列表数量
-   * @param filter 过滤条件 
-   * @returns 
+   * @param filter 过滤条件
+   * @returns
    */
   queryAppGroupListCount(filter: Filter): number;
   /**
    * 查询应用列表
-   * @param query 查询对象 
-   * @returns 
+   * @param query 查询对象
+   * @returns
    */
   queryAppList(query: Query): Array<App>;
   /**
    * 查询应用列表数量
-   * @param filter 过滤条件 
-   * @returns 
+   * @param filter 过滤条件
+   * @returns
    */
   queryAppListCount(filter: Filter): number;
   /**
    * 查询团队成员列表
-   * @param query 查询对象 
-   * @returns 
+   * @param query 查询对象
+   * @returns
    */
   queryCompanyMemberList(query: Query): Array<CompanyMember>;
   /**
    * 查询团队成员列表数量
-   * @param filter 过滤条件 
-   * @returns 
+   * @param filter 过滤条件
+   * @returns
    */
   queryCompanyMemberListCount(filter: Filter): number;
   /**
    * 查询团队角色列表
-   * @returns 
+   * @returns
    */
   queryRoleList(): Array<CompanyRole>;
   /**
    * 卸载应用
-   * @param appId 应用ID 
-   * @returns 
+   * @param appId 应用ID
+   * @returns
    */
   uninstallApp(appId: string): void;
   /**
    * 编辑应用分组
-   * @param bean 应用分组 
-   * @param updateFields 更新的字段列表 
-   * @returns 
+   * @param bean 应用分组
+   * @param updateFields 更新的字段列表
+   * @returns
    */
   updateAppGroup(bean: AppGroup, updateFields: Array<string>): number;
   /**
    * 更新团队成员
-   * @param member 团队成员 
-   * @param updateFields 更新字段 
-   * @returns 
+   * @param member 团队成员
+   * @param updateFields 更新字段
+   * @returns
    */
   updateCompanyMember(member: CompanyMember, updateFields: Array<string>): number;
 }
@@ -7421,9 +8009,9 @@ declare interface company {
 declare interface textindex {
   /**
    * 搜索
-   * @param moduleKey 模块标识符 
-   * @param vquery 查询条件 
-   * @returns 
+   * @param moduleKey 模块标识符
+   * @param vquery 查询条件
+   * @returns
    */
   search(moduleKey: string, vquery: TextindexSearchQuery): TextindexSearchResult;
 }
@@ -7431,43 +8019,55 @@ declare interface textindex {
 declare interface excel {
   /**
    * 创建模板Cell对象
-   * @param templateCell 模板Cell 
-   * @returns 
+   * @param templateCell 模板Cell
+   * @returns
    */
   createTemplateCell(templateCell: TemplateCell): ExcelCellEntity;
   /**
    * 创建模板图片对象
-   * @param tp 模板图片 
-   * @returns 
+   * @param tp 模板图片
+   * @returns
    */
   createTemplatePicture(tp: TemplatePicture): ExcelImageEntity;
   /**
    * 打开一个已经存在的Excel文件
-   * @param file 文件路径 
-   * @returns 
+   * @param filePath 文件路径
+   * @returns
    */
-  openExistFile(file: string): ExcelWorkbook;
+  openExistFile(filePath: string): ExcelWorkbook;
   /**
-   * 创建一个新的Excel文件
-   * @param file 文件路径 
-   * @returns 
+   * 打开一个已经存储到共享存储的Excel文件
+   * @param filePath 文件路径
+   * @returns
+   */
+  openExistStorageFile(filePath: string): ExcelWorkbook;
+  /**
+   * 创建一个新的Excel文件 默认SXSSFWorkbook格式
+   * @param file 文件路径
+   * @returns
    */
   openNewFile(file: string): ExcelWorkbook;
   /**
+   * 创建一个新的Excel文件 使用XSSFWorkbook
+   * @param file 文件路径
+   * @returns
+   */
+  openNewFileWithXSSF(file: string): ExcelWorkbook;
+  /**
    * 使用模板文件生成Excel
-   * @param file 文件路径 
-   * @param template 模板文件 
-   * @param ctx 上下文 
-   * @returns 
+   * @param file 文件路径
+   * @param template 模板文件
+   * @param ctx 上下文
+   * @returns
    */
   openWithTemplate(file: string, template: string, ctx: Record<string, Object>): ExcelWorkbook;
   /**
    * 使用模板文件生成Excel
-   * @param file 文件路径 
-   * @param template 模板文件 
-   * @param sheetNums 上下文 
-   * @param ctx sheet序号 
-   * @returns 
+   * @param file 文件路径
+   * @param template 模板文件
+   * @param sheetNums 上下文
+   * @param ctx sheet序号
+   * @returns
    */
   openWithTemplateWithSheets(file: string, template: string, sheetNums: Array<number>, ctx: Record<string, Object>): ExcelWorkbook;
 }
@@ -7475,244 +8075,249 @@ declare interface excel {
 declare interface app {
   /**
    * 终止当前脚本的运行
-   * @param message 消息 
-   * @returns 
+   * @param message 消息
+   * @returns
    */
   abort(message: string): void;
   /**
    * 终止当前脚本的运行
-   * @param message 消息 
-   * @param code 代码 
-   * @returns 
+   * @param message 消息
+   * @param code 代码
+   * @returns
    */
   abort(message: string, code: number): void;
   /**
    * 新增应用变更记录
-   * @param content 变更内容 
-   * @returns 
+   * @param content 变更内容
+   * @returns
    */
   addAppChangeLog(content: string): string;
   /**
    * 新增自定义角色
-   * @param role 自定义角色 
-   * @returns 
+   * @param role 自定义角色
+   * @returns
    */
   addCustomRole(role: CustomRole): void;
   /**
    * 新增应用设计成员列表
-   * @param type 类型 
-   * @param userList 用户列表 
-   * @returns 
+   * @param type 类型
+   * @param userList 用户列表
+   * @returns
    */
   addDesignerUserList(type: string, userList: Array<string>): void;
   /**
    * 获取当前应用的配置信息
-   * @returns 
+   * @returns
    */
   appDefine(): AppDefine;
   /**
    * 获取环境变量
-   * @param id 环境变量ID 
-   * @returns 
+   * @param id 环境变量ID
+   * @returns
    */
   appEnvProp(id: string): string;
   /**
    * 查询当前的应用ID
-   * @returns 
+   * @returns
    */
   appId(): string;
   /**
    * 查询应用运行信息
-   * @returns 
+   * @returns
    */
   appInfo(): App;
   /**
    * 取消收藏模块列表
-   * @param moduleIdList 模块ID列表 
-   * @returns 
+   * @param moduleIdList 模块ID列表
+   * @returns
    */
   cancelFavoriteModule(moduleIdList: Array<string>): number;
   /**
    * 删除应用变更记录
-   * @param id 变更记录ID 
-   * @returns 
+   * @param id 变更记录ID
+   * @returns
    */
   deleteAppChangeLog(id: string): number;
   /**
    * 删除自定义角色
-   * @param id 自定义角色ID 
-   * @returns 
+   * @param id 自定义角色ID
+   * @returns
    */
   deleteCustomRole(id: string): number;
   /**
    * 获取钉钉AccessToken
-   * @returns 
+   * @returns
    */
   dingtalkAccessToken(): string;
   /**
    * 执行脚本
-   * @param script 脚本 
-   * @returns 
+   * @param script 脚本
+   * @returns
    */
   eval(script: string): Object;
   /**
    * 收藏模块列表
-   * @param moduleIdList 模块ID列表 
-   * @returns 
+   * @param moduleIdList 模块ID列表
+   * @returns
    */
   favoriteModule(moduleIdList: Array<string>): Array<string>;
   /**
    * 获取飞书应用AccessToken
-   * @returns 
+   * @returns
    */
   feishuAccessToken(): string;
   /**
    * 获取飞书租户AccessToken
-   * @returns 
+   * @returns
    */
   feishuTenantAccessToken(): string;
   /**
    * 通过应用标识符查询应用Id
-   * @param key 应用标识符 
-   * @returns 
+   * @param key 应用标识符
+   * @returns
    */
   getAppIdByKey(key: string): string;
   /**
    * 查询应用设计成员列表
-   * @param type 类型 
-   * @returns 
+   * @param type 类型
+   * @returns
    */
   getDesignerUserList(type: string): Array<string>;
   /**
    * 通过模块标识符查询模块ID
-   * @param key 模块标识符 
-   * @returns 
+   * @param key 模块标识符
+   * @returns
    */
   getModuleIdByKey(key: string): string;
   /**
    * 通过模块ID查询模块标识符
-   * @param id 模块ID 
-   * @returns 
+   * @param id 模块ID
+   * @returns
    */
   getModuleKeyById(id: string): string;
   /**
    * 返回当前app的性能统计列表
-   * @returns 
+   * @returns
    */
   getPerformanceStatistics(): Array<ApplicationProcess>;
   /**
    * 通过路径返回脚本内容
-   * @param path 路径 
-   * @returns 
+   * @param path 路径
+   * @returns
    */
   getScriptContent(path: string): string;
   /**
    * 通过路径返回脚本列表，空路径表示根目录
-   * @param path 路径 
-   * @returns 
+   * @param path 路径
+   * @returns
    */
   getScriptList(path: string): Array<ScriptDefine>;
   /**
    * 隐藏模块提示信息
-   * @param moduleKey 模块标识符 
-   * @returns 
+   * @param moduleKey 模块标识符
+   * @returns
    */
   hideModuleAlert(moduleKey: string): void;
   /**
    * 调用自动化程序；如果自动化程序不存在则抛出异常
-   * @param automaticKey 自动化程序标识符 
-   * @param args 参数 
-   * @returns 
+   * @param automaticKey 自动化程序标识符
+   * @param args 参数
+   * @returns
    */
   invokeAutomatic(automaticKey: string, ...args: any): Object;
   /**
    * 返回模块树
-   * @returns 
+   * @returns
    */
   moduleTree(): Array<ObjectRef>;
   /**
    * 发布应用事件 ；团队中的其他应用可以通过监听器接收到事件消息
-   * @param event 应用事件 
-   * @returns 
+   * @param event 应用事件
+   * @returns
    */
   publishAppEvent(event: AppEvent): void;
   /**
    * 推送事件给客户端
-   * @param event 推送事件 
-   * @returns 
+   * @param event 推送事件
+   * @returns
    */
   pushEvent(event: PushEvent): void;
   /**
    * 查询应用变更记录列表
-   * @param query 查询对象 
-   * @returns 
+   * @param query 查询对象
+   * @returns
    */
   queryAppChangeLogList(query: Query): Array<AppChangeLog>;
   /**
    * 查询应用变更记录数量
-   * @param filter 过滤条件 
-   * @returns 
+   * @param filter 过滤条件
+   * @returns
    */
   queryAppChangeLogListCount(filter: Filter): number;
   /**
    * 查询自定义角色列表
-   * @param query 查询对象 
-   * @returns 
+   * @param query 查询对象
+   * @returns
    */
   queryCustomRoleList(query: Query): Array<CustomRole>;
   /**
    * 查询自定义角色列表总数
-   * @param filter 过滤条件 
-   * @returns 
+   * @param filter 过滤条件
+   * @returns
    */
   queryCustomRoleListCount(filter: Filter): number;
   /**
    * 查询收藏模块列表
-   * @param query 查询对象 
-   * @returns 
+   * @param query 查询对象
+   * @returns
    */
   queryFavoriteModuleList(query: Query): Array<ModuleFavorite>;
   /**
    * 查询收藏模块列表总数
-   * @param filter 过滤条件 
-   * @returns 
+   * @param filter 过滤条件
+   * @returns
    */
   queryFavoriteModuleListCount(filter: Filter): number;
   /**
    * 删除应用设计成员列表
-   * @param type 类型 
-   * @param userList 用户列表 
-   * @returns 
+   * @param type 类型
+   * @param userList 用户列表
+   * @returns
    */
   removeDesignerUserList(type: string, userList: Array<string>): void;
   /**
    * 运行定时任务
-   * @param scheduleId 定时任务标识符 
-   * @returns 
+   * @param scheduleId 定时任务标识符
+   * @returns
    */
   runSchedule(scheduleId: string): void;
   setAppBadge(content: string): void;
   /**
    * 设置模块提示信息；模块提示信息会显示在模块页面的顶部，用来展示一些描述性文字。例如在数据导入的时候显示当前的导入进度
-   * @param alert 模块提示信息 
-   * @returns 
+   * @param alert 模块提示信息
+   * @returns
    */
   showModuleAlert(alert: ModuleAlert): void;
   /**
    * 编辑自定义角色
-   * @param role 自定义角色 
-   * @param updateFields 更新字段 
-   * @returns 
+   * @param role 自定义角色
+   * @param updateFields 更新字段
+   * @returns
    */
   updateCustomRole(role: CustomRole, updateFields: Array<string>): number;
   /**
    * 查询当前操作的用户ID
-   * @returns 
+   * @returns
    */
   userId(): string;
   /**
+   * 查询当前操作的用户登录类型
+   * @returns
+   */
+  userLoginType(): string;
+  /**
    * 获取企业微信AccessToken
-   * @returns 
+   * @returns
    */
   weworkAccessToken(): string;
 }
@@ -7720,16 +8325,16 @@ declare interface app {
 declare interface word {
   /**
    * 生成Word中插入的图片数据
-   * @param pic 图片配置 
-   * @returns 
+   * @param pic 图片配置
+   * @returns
    */
   createPicture(pic: WordPicture): PictureRenderData;
   /**
    * 通过模板和数据生成一个Word文件
-   * @param template 模板文件在本地沙盒中的路径 
-   * @param path 生成的文件在本地沙盒中的路径 
-   * @param data 传递给模板的数据 
-   * @returns 
+   * @param template 模板文件在本地沙盒中的路径
+   * @param path 生成的文件在本地沙盒中的路径
+   * @param data 传递给模板的数据
+   * @returns
    */
   createWithTemplate(template: string, path: string, data: Record<string, Object>): void;
 }
@@ -7737,132 +8342,132 @@ declare interface word {
 declare interface utils {
   /**
    * 将byte数组转换为字符串
-   * @param data byte数组 
-   * @returns 
+   * @param data byte数组
+   * @returns
    */
   bytesToString(data: Array<any>): string;
   /**
    * 将byte数组转换为字符串
-   * @param data byte数组 
-   * @param charset 字符集,可选项UTF-8，ISO-8859-1，GBK等 
-   * @returns 
+   * @param data byte数组
+   * @param charset 字符集,可选项UTF-8，ISO-8859-1，GBK等
+   * @returns
    */
   bytesToString(data: Array<any>, charset: string): string;
   /**
    * 字符串转义
-   * @param content 字符串 
-   * @returns 
+   * @param content 字符串
+   * @returns
    */
   escape(content: string): string;
   /**
    * 返回系统的环境变量
-   * @returns 
+   * @returns
    */
   getEnv(): Record<string, string>;
   /**
    * 返回拼音
-   * @param str 要转换的字符串 
-   * @param separator 分隔符 
-   * @returns 
+   * @param str 要转换的字符串
+   * @param separator 分隔符
+   * @returns
    */
   getPinyin(str: string, separator: string): string;
   /**
    * 返回拼音首字母
-   * @param str 要转换的字符串 
-   * @param separator 分隔符 
-   * @returns 
+   * @param str 要转换的字符串
+   * @param separator 分隔符
+   * @returns
    */
   getShortPinyin(str: string, separator: string): string;
   /**
    * HTML格式文本转换为纯文本格式
-   * @param html html格式文本 
-   * @returns 
+   * @param html html格式文本
+   * @returns
    */
   html2text(html: string): string;
   /**
    * HTML格式文本转换为纯文本格式
-   * @param html html格式文本 
-   * @returns 
+   * @param html html格式文本
+   * @returns
    */
   htmlToMarkdown(html: string): string;
   /**
    * js对象转化为java对象
-   * @param value js对象 
-   * @returns 
+   * @param value js对象
+   * @returns
    */
   js2java(value: Object): Object;
   /**
    * 计算两个json字符串的差异
-   * @param jsonA jsonA 
-   * @param jsonB jsonB 
-   * @returns 
+   * @param jsonA jsonA
+   * @param jsonB jsonB
+   * @returns
    */
   jsonDiff(jsonA: string, jsonB: string): string;
   /**
    * json补丁应用
-   * @param json json 
-   * @param patch patch 
-   * @returns 
+   * @param json json
+   * @param patch patch
+   * @returns
    */
   jsonPatch(json: string, patch: string): string;
   /**
    * Markdown格式文本转换为HTML格式
-   * @param markdown Markdown格式文本 
-   * @returns 
+   * @param markdown Markdown格式文本
+   * @returns
    */
   markdownToHtml(markdown: string): string;
   /**
    * 返回随机的UUID
-   * @returns 
+   * @returns
    */
   randomUUID(): string;
   /**
    * 休眠
-   * @param millis 休眠时间 
-   * @returns 
+   * @param millis 休眠时间
+   * @returns
    */
   sleep(millis: number): void;
   /**
    * 将字符串转换为byte数组
-   * @param data 字符串 
-   * @returns 
+   * @param data 字符串
+   * @returns
    */
   stringToBytes(data: string): Array<any>;
   /**
    * 将字符串转换为byte数组
-   * @param data 字符串 
-   * @param charset 字符集,可选项UTF-8，ISO-8859-1，GBK等 
-   * @returns 
+   * @param data 字符串
+   * @param charset 字符集,可选项UTF-8，ISO-8859-1，GBK等
+   * @returns
    */
   stringToBytes(data: string, charset: string): Array<any>;
   /**
    * 将对象转换为JSON字符串
-   * @param obj 要转换的对象 
-   * @returns 
+   * @param obj 要转换的对象
+   * @returns
    */
   toJSON(obj: Object): string;
   /**
    * 将对象转换为JSON字符串
-   * @param o 要转换的对象 
-   * @returns 
+   * @param o 要转换的对象
+   * @returns
    */
   toJSONWithPretty(o: Object): string;
   /**
    * 字符串反转义
-   * @param content 字符串 
-   * @returns 
+   * @param content 字符串
+   * @returns
    */
   unescape(content: string): string;
   /**
    * URL解码，将经过URL编码的字符串恢复为其原始形式
-   * @param urlEncode 字符串 
-   * @returns 
+   * @param urlEncode 字符串
+   * @returns
    */
   urlDecode(urlEncode: string): string;
   /**
    * URL编码，将特殊字符转换为可在URL中安全传输的编码方式
-   * @param url 字符串 
-   * @returns 
+   * @param url 字符串
+   * @returns
    */
   urlEncode(url: string): string;
 }
@@ -8302,8 +8907,16 @@ declare interface Company {
    * ID
    */
   id: string;
+  /**
+   * 状态
+   */
+  isValid: boolean;
   maxApplicationNum: number;
   maxUserNum: number;
+  /**
+   * 当前成员数量
+   */
+  memberNum: number;
   /**
    * 名称
    */
@@ -8316,6 +8929,7 @@ declare interface Company {
    * 当前套餐
    */
   version: string;
+  setValid(valid: boolean): void;
 }
 
 /**
@@ -8500,6 +9114,10 @@ declare interface OptLog {
    */
   id: string;
   /**
+   * ip
+   */
+  ip: string;
+  /**
    * 名称
    */
   name: string;
@@ -8534,7 +9152,7 @@ declare interface UpdateAppGroupRequest {
 declare interface sftp {
   /**
    * 创建sftp客户端
-   * @returns 
+   * @returns
    */
   createClient(): SftpClient;
 }
@@ -8620,4 +9238,3 @@ declare namespace automatic {
     function setReturnValue(value: any): void;
 }
 declare var console: Console;
-
